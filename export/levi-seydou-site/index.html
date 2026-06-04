@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Levi Seydou — Photography & Film</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --gold: #e3a44e;          /* bright accent gold */
+    --gold-line: #9a7236;     /* gold hairline / border */
+    --cream: #f4ede1;         /* primary warm white */
+    --cream-dim: #cdbfa6;     /* body text */
+    --muted: #8c7d6a;         /* captions / meta */
+    --hair: rgba(244,237,225,0.12); /* hairline borders */
+  }
+  html, body {
+    margin: 0; color: var(--cream); font-family: var(--font-body); -webkit-font-smoothing: antialiased;
+    background-color: #100b08;
+    background-image: radial-gradient(120% 80% at 50% -10%, #3a2a18 0%, #1c140d 38%, #100b08 70%);
+    background-attachment: fixed; background-repeat: no-repeat;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--gold); color: #1a130b; }
+  @media (max-width: 991px) {
+    .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding: 56px 0; min-height: 0 !important; text-align: center; }
+    .hero-portrait { order: -1; }
+    .hero-portrait > div { max-width: 360px !important; }
+    .work-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  }
+  @media (max-width: 600px) {
+    .work-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Primitives.jsx"></script>
+  <script type="text/babel" src="Nav.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="Work.jsx"></script>
+  <script type="text/babel" src="About.jsx"></script>
+  <script type="text/babel" src="Contact.jsx"></script>
+  <script type="text/babel">
+    function App() {
+      return (
+        <React.Fragment>
+          <Nav />
+          <Hero />
+          <Work />
+          <About />
+          <Contact />
+        </React.Fragment>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
