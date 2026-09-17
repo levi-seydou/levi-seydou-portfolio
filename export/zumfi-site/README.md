@@ -23,19 +23,21 @@ those screenshots rather than from source.
 | Section | Anchor | Source of the copy |
 |---|---|---|
 | Hero | `#top` | Live site: badge, "Reliable Internet. / Within Reach.", lead, both buttons, the "Launching in Niamey, Niger" line and the "Coming soon" chip |
-| Our mission | `#mission` | Live site, verbatim: the heading, both paragraphs, "Focused on everyday households", and the At home / For learning / For local work tags |
-| What we're building | `#building` | Live site: heading, lead, and card 01. See *Written here* below |
-| Get in touch | `#contact` | Written here — the live contact section wasn't in the screenshots |
+| Our mission | `#mission` | Live site, verbatim |
+| What we're building | `#building` | Live site, verbatim — all four cards |
+| Why connectivity matters | `#why` | Live site, verbatim — the pull quote and all four rows |
+| Launching in Niamey | `#niamey` | Live site, verbatim — heading, body, both tags, "Stay in touch" |
+| Contact | `#contact` | Live site: eyebrow, "Let's connect.", the lead and the "Contact Zumfi" row |
 
-### Written here, not taken from the live site
+`#niamey` is not linked from the nav or footer, matching the live site — it's a section you scroll past.
 
-- **Card 02 "Affordable Access"** — the live card's body was cut off mid-sentence in the
-  screenshot ("Working to make pricing that is…"). The line here is a stand-in written in the same
-  voice; replace it with the real one.
-- **Card 03 "Licensed & Compliant"** — not visible in the screenshots at all. This one is drawn
-  from the overview document's licensing section, so it's factual, but it may not be what the live
-  card says.
-- **The whole contact section** — form, details and headings, built in the same design language.
+### The one addition
+
+The live contact section is an email link only. This page keeps that row exactly as it appears
+there, and adds a short form underneath it (name, email, optional phone, optional quartier,
+message). A form catches people who won't open a mail client, and the quartier field maps demand
+against future coverage. If you'd rather match the live site exactly, delete the `<form>` and its
+`<script>` — the "Contact Zumfi" row stands on its own.
 
 ## Design tokens
 
@@ -53,7 +55,7 @@ Recurring devices from the live site: gradient-dash eyebrows (blue → green →
 with a corner arrow, the tri-colour rule between sections, and the logo's three arcs used as a
 watermark in the corner of each numbered card.
 
-**Fonts are a guess.** The live site's faces weren't identifiable from screenshots, so this uses
+**Fonts are still a guess.** The live site's faces weren't identifiable from screenshots, so this uses
 **Figtree** (display — tight, geometric, close to the headings) over **Karla** (body). If you know
 what the real ones are, swapping the two names in `--fd` / `--fb` and the Google Fonts link is the
 whole change.

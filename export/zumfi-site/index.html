@@ -140,20 +140,68 @@
   .mission-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 
   /* numbered cards */
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
   .card { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--line);
-          border-radius: var(--r); padding: 34px 32px 36px; box-shadow: var(--shadow-sm); }
+          border-radius: var(--r); padding: 30px 26px 34px; box-shadow: var(--shadow-sm); }
   .card .n { position: absolute; top: 28px; right: 30px; font-family: var(--fd); font-weight: 800; font-size: 15px; color: #c3d5e2; }
-  .card .ic { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; margin-bottom: 44px; }
+  .card .ic { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; margin-bottom: 38px; }
   .card:nth-child(1) .ic { background: rgba(72,156,216,.13); color: var(--blue); }
   .card:nth-child(2) .ic { background: rgba(84,192,156,.15); color: #3aa483; }
   .card:nth-child(3) .ic { background: rgba(228,204,108,.22); color: #b79a33; }
-  .card h3 { margin-bottom: 10px; }
-  .card p { font-size: 16px; }
-  .card .arcs { position: absolute; right: -34px; bottom: 0; width: 184px; opacity: .4; }
+  .card:nth-child(4) .ic { background: rgba(90,110,128,.12); color: #5a6e80; }
+  .card:nth-child(1) .arcs { color: #489cd8; }
+  .card:nth-child(2) .arcs { color: #54c09c; }
+  .card:nth-child(3) .arcs { color: #e4cc6c; }
+  .card:nth-child(4) .arcs { color: #b9c9d4; }
+  .card h3 { margin-bottom: 10px; font-size: 19.5px; }
+  .card p { font-size: 15.5px; }
+  .card .arcs { position: absolute; right: -30px; bottom: 0; width: 158px; opacity: .45; }
+
+  /* ---------- why connectivity matters ---------- */
+  .eyebrow.gold { color: #b79a33; }
+  .eyebrow.mint { color: #7ad6b4; }
+  .eyebrow.mint::before { background: linear-gradient(90deg, #7fc4ea 0%, #7ad6b4 55%, #f0dc9a 100%); }
+  .quote { border-left: 4px solid var(--yellow); padding: 4px 0 4px 24px; font-size: 18.5px; max-width: 62ch; }
+  .rows { margin-top: 52px; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 44px 62px 1fr 28px; gap: 4px; align-items: start;
+         padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .row .num { font-family: var(--fd); font-weight: 700; font-size: 14px; color: #a9bdcb; padding-top: 14px; }
+  .row .ic { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center;
+             background: rgba(72,156,216,.11); color: var(--blue); }
+  .row h3 { font-size: 20px; margin-bottom: 6px; }
+  .row p { font-size: 16px; max-width: 54ch; }
+  .row .go { color: var(--blue); padding-top: 12px; justify-self: end; }
+
+  /* ---------- launching panel ---------- */
+  .panel { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); position: relative; }
+  .panel > svg { display: block; width: 100%; height: auto; }
+  .panel .chip2 { position: absolute; left: 26px; top: 210px; display: flex; gap: 13px; align-items: center;
+                  background: rgba(255,255,255,.95); border-radius: 999px; padding: 12px 24px 12px 16px; box-shadow: var(--shadow-sm); }
+  .panel .chip2 svg { color: var(--ink); flex: none; }
+  .panel .chip2 strong { display: block; font-family: var(--fd); font-weight: 700; color: var(--ink); font-size: 16.5px; }
+  .panel .chip2 span { font-size: 15px; color: var(--muted); }
+  .panel-dark { background: var(--ink); color: #c3d2e0; padding: 52px 54px 56px; position: relative; overflow: hidden; }
+  .panel-dark h2 { color: #fff; margin-bottom: 20px; }
+  .panel-dark p { max-width: 58ch; font-size: 17.5px; }
+  .panel-dark .deco { position: absolute; right: 34px; top: 30px; width: 190px; opacity: .55; }
+  .tags-dot { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 26px;
+              font-family: var(--fd); font-weight: 700; font-size: 15.5px; color: #e7eef5; }
+  .tags-dot span { display: flex; align-items: center; gap: 10px; }
+  .tags-dot i { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); }
+  .btn-white { background: #fff; color: var(--ink); margin-top: 32px; }
+  .btn-white:hover { background: #eaf3f9; transform: translateY(-1px); }
 
   /* ---------- contact ---------- */
-  .contact-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 52px; align-items: start; }
+  .contact-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r);
+                  box-shadow: var(--shadow); padding: 44px; position: relative; overflow: hidden; }
+  .contact-card > .arcs { position: absolute; right: -40px; bottom: -14px; width: 190px; opacity: .3; color: var(--green); }
+  .contact-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 52px; align-items: start; position: relative; z-index: 1; }
+  .reach { text-decoration: none; display: flex; gap: 16px; align-items: center; padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid var(--line); }
+  .reach .ic { flex: none; width: 58px; height: 58px; border-radius: 19px; background: var(--blue); color: #fff; display: grid; place-items: center; }
+  .reach strong { display: block; font-family: var(--fd); font-weight: 700; font-size: 18px; color: var(--ink); }
+  .reach a { font-size: 16.5px; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+  .reach .go { margin-left: auto; width: 46px; height: 46px; border-radius: 50%; background: rgba(72,156,216,.12);
+               color: var(--blue); display: grid; place-items: center; flex: none; }
   .field { margin-bottom: 18px; }
   .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   label { display: block; font-family: var(--fd); font-weight: 700; font-size: 14.5px; color: var(--ink); margin-bottom: 8px; }
@@ -185,15 +233,17 @@
 
   /* ---------- footer ---------- */
   .site-footer { background: var(--ink); color: #b9c7d6; }
-  .site-footer .wrap { padding: 46px var(--gutter); display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; }
-  .site-footer img { width: 44px; height: 44px; border-radius: 14px; display: block; }
-  .fb { display: flex; align-items: center; gap: 14px; }
-  .fb p { font-family: var(--fd); font-weight: 700; color: #fff; font-size: 17px; }
-  .fb span { display: block; font-family: var(--fb); font-weight: 400; font-size: 14.5px; color: #8fa1b3; }
-  .fc { text-align: right; font-size: 14.5px; line-height: 1.9; }
-  .fc a { color: #dbe6f0; text-decoration: none; font-weight: 600; }
-  .fc a:hover { color: #fff; }
-  .fc small { color: #7d90a3; }
+  .site-footer .wrap { padding: 54px var(--gutter) 40px; }
+  .foot-logo { background: #fff; border-radius: 14px; padding: 12px 18px; display: inline-block; }
+  .foot-logo img { height: 40px; width: auto; display: block; }
+  .foot-tag { margin-top: 18px; font-family: var(--fd); font-weight: 600; color: #fff; font-size: 17px; }
+  .foot-nav { display: flex; flex-wrap: wrap; gap: 14px 34px; margin-top: 30px; }
+  .foot-nav a { font-family: var(--fd); font-weight: 700; font-size: 16px; color: #dbe6f0; text-decoration: none; }
+  .foot-nav a:hover { color: #fff; }
+  .foot-base { margin-top: 32px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.12);
+               display: flex; flex-wrap: wrap; gap: 10px 30px; justify-content: space-between; font-size: 14.5px; color: #8fa1b3; }
+  .foot-base .where { display: flex; align-items: center; gap: 9px; }
+  .foot-base a { color: #dbe6f0; text-decoration: none; font-weight: 600; }
 
   /* ---------- responsive ---------- */
   @media (max-width: 940px) {
@@ -202,6 +252,10 @@
     .art-wrap { max-width: 520px; margin: 0 auto; }
     .chip { right: 8px; }
     .nav a { display: none; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .panel-dark { padding: 40px 30px 44px; }
+    .panel-dark .deco { display: none; }
+    .contact-card { padding: 32px 26px; }
     .section { padding: 76px 0; }
     .hero { padding: 54px 0 76px; }
     .k2, .k3 { display: none; }
@@ -211,7 +265,13 @@
     body { font-size: 16.5px; }
     .site-header .wrap { height: 68px; }
     .brand img { height: 34px; }
-    .card { padding: 28px 24px 30px; }
+    .card { padding: 26px 22px 30px; }
+    .cards { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 34px 1fr; gap: 6px 12px; padding: 24px 0; }
+    .row .ic, .row .go { display: none; }
+    .quote { padding-left: 18px; font-size: 17px; }
+    .panel .chip2 { left: 16px; top: 150px; padding: 10px 18px 10px 12px; }
+    .contact-card { padding: 26px 20px; }
     .card .ic { margin-bottom: 30px; }
     .row-2 { grid-template-columns: 1fr; gap: 0; }
     .hero-cta .btn, .form-foot .btn { width: 100%; }
@@ -232,7 +292,12 @@
     <ellipse cx="160" cy="56" rx="46" ry="28"/><ellipse cx="206" cy="62" rx="38" ry="22"/>
     <rect x="54" y="60" width="176" height="26" rx="13"/>
   </g>
-  <g id="arcmark" fill="none" stroke-linecap="round" stroke-width="7">
+  <g id="arcmark" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7">
+    <path d="M8 74 A 34 34 0 0 1 76 74"/>
+    <path d="M66 74 A 30 30 0 0 1 126 74"/>
+    <path d="M116 74 A 26 26 0 0 1 168 74"/>
+  </g>
+  <g id="arctri" fill="none" stroke-linecap="round" stroke-width="7">
     <path d="M8 74 A 34 34 0 0 1 76 74" stroke="#489cd8"/>
     <path d="M66 74 A 30 30 0 0 1 126 74" stroke="#54c09c"/>
     <path d="M116 74 A 26 26 0 0 1 168 74" stroke="#e4cc6c"/>
@@ -245,6 +310,7 @@
     <nav class="nav" aria-label="Main">
       <a href="#mission">Our mission</a>
       <a href="#building">What we're building</a>
+      <a href="#why">Why it matters</a>
       <a class="btn btn-primary btn-sm" href="#contact">Contact Us</a>
     </nav>
   </div>
@@ -463,7 +529,7 @@
         <div class="card">
           <span class="n">01</span>
           <span class="ic" aria-hidden="true">
-            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/></svg>
           </span>
           <h3>Reliable Home Internet</h3>
           <p>Designed to provide households with dependable connectivity for everyday online needs.</p>
@@ -472,20 +538,253 @@
         <div class="card">
           <span class="n">02</span>
           <span class="ic" aria-hidden="true">
-            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
           </span>
           <h3>Affordable Access</h3>
-          <p>Working toward pricing that ordinary households can plan around, month to month.</p>
+          <p>Working toward service that is financially accessible to more families and communities.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
           <span class="n">03</span>
           <span class="ic" aria-hidden="true">
-            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
           </span>
-          <h3>Licensed &amp; Compliant</h3>
-          <p>Securing the licences and authorizations required to operate in Niger, with equipment properly approved.</p>
+          <h3>Simple Home WiFi</h3>
+          <p>Connectivity designed around the way families actually use the internet at home.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+        <div class="card">
+          <span class="n">04</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3>Built for Niger</h3>
+          <p>Beginning in Niamey with a long-term vision of helping expand connectivity to more communities.</p>
+          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= why connectivity matters ================= -->
+  <section class="section" id="why">
+    <div class="wrap">
+      <p class="eyebrow gold">Why connectivity matters</p>
+      <h2>More than just WiFi.</h2>
+      <p class="quote" style="margin-top:28px;">
+        Dependable home internet can help unlock useful everyday possibilities.
+        That is the future Zumfi is preparing for.
+      </p>
+
+      <div class="rows">
+        <div class="row">
+          <span class="num">01</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <div>
+            <h3>Education</h3>
+            <p>Helping students access learning resources, research, online courses, and educational opportunities.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <div class="row">
+          <span class="num">02</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </span>
+          <div>
+            <h3>Work &amp; Business</h3>
+            <p>Giving entrepreneurs, professionals, and small businesses better access to digital tools and markets.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <div class="row">
+          <span class="num">03</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z"/></svg>
+          </span>
+          <div>
+            <h3>Communication</h3>
+            <p>Helping families and communities stay connected locally and internationally.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <div class="row">
+          <span class="num">04</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/><path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+          </span>
+          <div>
+            <h3>Opportunity</h3>
+            <p>Making it easier for people to participate in an increasingly digital economy.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= launching in Niamey ================= -->
+  <section class="section section-pale" id="niamey">
+    <div class="wrap">
+      <div class="panel">
+        <svg viewBox="0 0 1040 460" role="img" aria-label="An aerial view of Niamey at golden hour, with ribbons of connection flowing over the rooftops">
+          <defs>
+            <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#bcd9ee"/><stop offset="46%" stop-color="#ecdcb8"/><stop offset="100%" stop-color="#e8cfa0"/>
+            </linearGradient>
+            <linearGradient id="earth" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e3c391"/><stop offset="100%" stop-color="#cfa469"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="1040" height="460" fill="url(#dusk)"/>
+          <circle cx="852" cy="118" r="34" fill="#f6e2ae" opacity=".9"/>
+          <g fill="#fff" opacity=".85">
+            <g transform="translate(120 44) scale(.5)"><use href="#cloud"/></g>
+            <g transform="translate(560 30) scale(.66)"><use href="#cloud"/></g>
+            <g transform="translate(820 58) scale(.4)"><use href="#cloud"/></g>
+          </g>
+
+          <!-- river + far bank -->
+          <path d="M0 196 C 220 182 420 206 620 194 C 790 184 920 190 1040 184 L1040 214 L0 214 Z" fill="#a9cbd8" opacity=".85"/>
+          <path d="M0 214 L1040 214 L1040 240 L0 244 Z" fill="#d8c69c"/>
+
+          <!-- ground -->
+          <path d="M0 238 L1040 232 L1040 460 L0 460 Z" fill="url(#earth)"/>
+
+          <!-- distant town, hazed back -->
+          <g fill="#cfae7e" opacity=".55">
+            <rect x="40"  y="204" width="52" height="36" rx="4"/><rect x="108" y="212" width="40" height="28" rx="4"/>
+            <rect x="196" y="202" width="58" height="38" rx="4"/><rect x="286" y="212" width="44" height="28" rx="4"/>
+            <rect x="380" y="204" width="50" height="36" rx="4"/><rect x="470" y="212" width="42" height="28" rx="4"/>
+            <rect x="560" y="202" width="56" height="38" rx="4"/><rect x="660" y="212" width="46" height="28" rx="4"/>
+            <rect x="760" y="204" width="52" height="36" rx="4"/><rect x="856" y="212" width="44" height="28" rx="4"/>
+            <rect x="940" y="202" width="58" height="38" rx="4"/>
+          </g>
+
+          <!-- mid rooftops -->
+          <g>
+            <rect x="24" y="254" width="150" height="86" rx="7" fill="#e0bd8c"/>
+            <rect x="24" y="254" width="150" height="11" rx="5" fill="#f0d6ab"/>
+            <rect x="24" y="334" width="150" height="6" fill="#00000010"/>
+            <rect x="48" y="284" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="86" y="284" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="124" y="284" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="84" y="302" width="30" height="38" rx="5" fill="#6fb0c6"/>
+            <rect x="128" y="234" width="30" height="22" rx="6" fill="#f0d6ab"/>
+            <rect x="134" y="226" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="196" y="268" width="120" height="72" rx="7" fill="#d8b07d"/>
+            <rect x="196" y="268" width="120" height="11" rx="5" fill="#e9cda0"/>
+            <rect x="196" y="334" width="120" height="6" fill="#00000010"/>
+            <rect x="223" y="298" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="263" y="298" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="336" y="250" width="164" height="90" rx="7" fill="#e4c495"/>
+            <rect x="336" y="250" width="164" height="11" rx="5" fill="#f4ddb4"/>
+            <rect x="336" y="334" width="164" height="6" fill="#00000010"/>
+            <rect x="356" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="389" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="421" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="454" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="403" y="302" width="30" height="38" rx="5" fill="#79b9a4"/>
+            <rect x="520" y="270" width="128" height="70" rx="7" fill="#d4aa74"/>
+            <rect x="520" y="270" width="128" height="11" rx="5" fill="#e6c89a"/>
+            <rect x="520" y="334" width="128" height="6" fill="#00000010"/>
+            <rect x="539" y="300" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="571" y="300" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="603" y="300" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="602" y="250" width="30" height="22" rx="6" fill="#e6c89a"/>
+            <rect x="608" y="242" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="668" y="252" width="150" height="88" rx="7" fill="#e0bd8c"/>
+            <rect x="668" y="252" width="150" height="11" rx="5" fill="#f0d6ab"/>
+            <rect x="668" y="334" width="150" height="6" fill="#00000010"/>
+            <rect x="692" y="282" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="730" y="282" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="768" y="282" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="728" y="302" width="30" height="38" rx="5" fill="#6fb0c6"/>
+            <rect x="838" y="266" width="140" height="74" rx="7" fill="#d8b07d"/>
+            <rect x="838" y="266" width="140" height="11" rx="5" fill="#e9cda0"/>
+            <rect x="838" y="334" width="140" height="6" fill="#00000010"/>
+            <rect x="860" y="296" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="895" y="296" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="930" y="296" width="26" height="24" rx="5" fill="#00000018"/>
+          </g>
+
+          <!-- trees between the rows -->
+          <g>
+            <rect x="238" y="330" width="7" height="24" rx="3.5" fill="#8f6f43"/><circle cx="241" cy="316" r="25" fill="#5e9463"/>
+            <rect x="506" y="336" width="6" height="22" rx="3" fill="#8f6f43"/><circle cx="509" cy="322" r="21" fill="#6fa06f"/>
+            <rect x="824" y="330" width="7" height="24" rx="3.5" fill="#8f6f43"/><circle cx="827" cy="316" r="24" fill="#5e9463"/>
+            <rect x="140" y="348" width="6" height="20" rx="3" fill="#8f6f43"/><circle cx="143" cy="336" r="18" fill="#6fa06f"/>
+            <rect x="962" y="342" width="6" height="22" rx="3" fill="#8f6f43"/><circle cx="965" cy="328" r="20" fill="#5e9463"/>
+          </g>
+
+          <!-- foreground rooftops -->
+          <g>
+            <rect x="-10" y="372" width="214" height="92" rx="7" fill="#edd0a0"/>
+            <rect x="-10" y="372" width="214" height="11" rx="5" fill="#fbead0"/>
+            <rect x="-10" y="458" width="214" height="6" fill="#00000010"/>
+            <rect x="30" y="402" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="84" y="402" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="138" y="402" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="82" y="426" width="30" height="38" rx="5" fill="#5ea6bf"/>
+            <rect x="158" y="352" width="30" height="22" rx="6" fill="#fbead0"/>
+            <rect x="164" y="344" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="232" y="388" width="190" height="76" rx="7" fill="#e2c091"/>
+            <rect x="232" y="388" width="190" height="11" rx="5" fill="#f3dcb6"/>
+            <rect x="232" y="458" width="190" height="6" fill="#00000010"/>
+            <rect x="266" y="418" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="314" y="418" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="362" y="418" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="452" y="374" width="206" height="90" rx="7" fill="#edd0a0"/>
+            <rect x="452" y="374" width="206" height="11" rx="5" fill="#fbead0"/>
+            <rect x="452" y="458" width="206" height="6" fill="#00000010"/>
+            <rect x="490" y="404" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="542" y="404" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="594" y="404" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="540" y="426" width="30" height="38" rx="5" fill="#6cb49e"/>
+            <rect x="690" y="390" width="178" height="74" rx="7" fill="#e2c091"/>
+            <rect x="690" y="390" width="178" height="11" rx="5" fill="#f3dcb6"/>
+            <rect x="690" y="458" width="178" height="6" fill="#00000010"/>
+            <rect x="736" y="420" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="796" y="420" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="822" y="370" width="30" height="22" rx="6" fill="#f3dcb6"/>
+            <rect x="828" y="362" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="898" y="376" width="170" height="88" rx="7" fill="#edd0a0"/>
+            <rect x="898" y="376" width="170" height="11" rx="5" fill="#fbead0"/>
+            <rect x="898" y="458" width="170" height="6" fill="#00000010"/>
+            <rect x="942" y="406" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="998" y="406" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="968" y="426" width="30" height="38" rx="5" fill="#5ea6bf"/>
+          </g>
+
+          <!-- ribbons of connection -->
+          <g fill="none" stroke-linecap="round" stroke-width="7">
+            <path d="M-20 258 C 180 192 320 314 520 246 C 700 186 850 290 1060 222" stroke="#489cd8" opacity=".95"/>
+            <path d="M-20 296 C 200 234 330 350 540 284 C 730 228 870 322 1060 260" stroke="#54c09c" opacity=".9"/>
+            <path d="M-20 334 C 190 282 350 382 560 322 C 750 268 880 358 1060 302" stroke="#e4cc6c" opacity=".95"/>
+          </g>
+        </svg>
+
+        <div class="chip2">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Niamey, Niger</strong><span>Beginning close to home</span></span>
+        </div>
+
+        <div class="panel-dark">
+          <svg class="deco" viewBox="0 0 176 82" aria-hidden="true"><use href="#arctri"/></svg>
+          <p class="eyebrow mint">Launching in Niamey</p>
+          <h2>Starting in Niamey.</h2>
+          <p>
+            Zumfi is preparing to launch its first services in Niamey, Niger. Our goal is to begin
+            locally, learn from the communities we serve, and build a strong foundation for future growth.
+          </p>
+          <p class="tags-dot"><span><i></i> Preparing to launch</span><span><i></i> Starting locally</span></p>
+          <a class="btn btn-white" href="#contact">
+            Stay in touch
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -495,10 +794,20 @@
   <section class="section" id="contact">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
-        <p class="eyebrow">Get in touch</p>
-        <h2>Let's talk about getting connected.</h2>
-        <p class="lead">Whether you'd like the service at home, or you'd like to work with us on bringing it to more neighbourhoods — write to us.</p>
+        <p class="eyebrow">Contact</p>
+        <h2>Let's connect.</h2>
+        <p class="lead">Interested in Zumfi, potential collaboration, or learning more about what we're
+        building? We'd be glad to hear from you.</p>
       </div>
+
+      <div class="contact-card">
+        <a class="reach" href="mailto:sey182833@oru.edu">
+          <span class="ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z"/></svg>
+          </span>
+          <span><strong>Contact Zumfi</strong><span style="font-size:16.5px;color:var(--blue);text-decoration:underline;text-underline-offset:3px;">sey182833@oru.edu</span></span>
+          <span class="go" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
 
       <div class="contact-grid">
         <div>
@@ -521,7 +830,6 @@
               <textarea id="message" name="message" required placeholder="What would you like to know?"></textarea></div>
             <div class="form-foot">
               <button class="btn btn-primary" type="submit" id="submit-btn">Send message</button>
-              <p class="note">Or email <a href="mailto:sey182833@oru.edu">sey182833@oru.edu</a>.</p>
             </div>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
@@ -532,10 +840,6 @@
         </div>
 
         <div>
-          <div class="detail">
-            <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <div><p class="k">Email</p><a class="v" href="mailto:sey182833@oru.edu">sey182833@oru.edu</a></div>
-          </div>
           <div class="detail">
             <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
             <div><p class="k">Phone</p><a class="v" href="tel:+18162169235">+1 816 216 9235</a></div>
@@ -550,6 +854,8 @@
           </div>
         </div>
       </div>
+      <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+      </div>
     </div>
   </section>
 </main>
@@ -557,14 +863,21 @@
 <div class="rule" aria-hidden="true"><i></i><i></i><i></i></div>
 <footer class="site-footer">
   <div class="wrap">
-    <div class="fb">
-      <img src="assets/zumfi-icon.png" alt="">
-      <p>Zumfi<span>Home internet · Niamey, Niger</span></p>
+    <span class="foot-logo"><img src="assets/zumfi-logo.png" alt="Zumfi"></span>
+    <p class="foot-tag">Reliable Internet. Within Reach.</p>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="#mission">Mission</a>
+      <a href="#building">What We're Building</a>
+      <a href="#why">Why Connectivity Matters</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="foot-base">
+      <p>© 2026 Zumfi. All rights reserved.</p>
+      <p class="where">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Niamey, Niger · <a href="mailto:sey182833@oru.edu">sey182833@oru.edu</a>
+      </p>
     </div>
-    <p class="fc">
-      <a href="mailto:sey182833@oru.edu">sey182833@oru.edu</a> · <a href="tel:+18162169235">+1 816 216 9235</a><br>
-      <small>© 2026 Zumfi. All rights reserved.</small>
-    </p>
   </div>
 </footer>
 
