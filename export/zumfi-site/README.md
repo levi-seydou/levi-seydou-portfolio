@@ -1,7 +1,7 @@
 # Zumfi — one-page site
 
-A single-page website for **Zumfi**, the fixed wireless home internet service being established
-in Niamey, Niger. No build step, no framework, no dependencies: `index.html` is self-contained
+A single-page site for **Zumfi**, the fixed wireless home internet service being established in
+Niamey, Niger. No build step, no framework, no dependencies: `index.html` is self-contained
 (inline CSS, inline SVG, ~30 lines of JS) and the only external request is the Google Fonts
 stylesheet.
 
@@ -13,43 +13,65 @@ assets/zumfi-icon-180.png  apple-touch-icon
 assets/favicon.png         32×32 favicon
 ```
 
-## The page
+## Built to match the live site
 
-| Section | Anchor | Content |
+This page follows the design language of `zumfi.netlify.app` as captured in screenshots — palette,
+type hierarchy, section rhythm and copy. The live site itself could not be reached from the
+environment this was built in (outbound network is blocked), so everything here was matched from
+those screenshots rather than from source.
+
+| Section | Anchor | Source of the copy |
 |---|---|---|
-| Hero | `#top` | "Home internet, out of thin air" — the offer in two sentences, both CTAs, and an SVG of the model: tower → rooftop receiver → WiFi indoors |
-| Three points | — | Flat fee · WiFi for everyone · Nothing to dig |
-| Vision | — | The mission statement, alone on a sky gradient |
-| How it works | `#how` | Three steps, plus one line on licensing |
-| Contact | `#contact` | Short form and contact details |
+| Hero | `#top` | Live site: badge, "Reliable Internet. / Within Reach.", lead, both buttons, the "Launching in Niamey, Niger" line and the "Coming soon" chip |
+| Our mission | `#mission` | Live site, verbatim: the heading, both paragraphs, "Focused on everyday households", and the At home / For learning / For local work tags |
+| What we're building | `#building` | Live site: heading, lead, and card 01. See *Written here* below |
+| Get in touch | `#contact` | Written here — the live contact section wasn't in the screenshots |
 
-Deliberately airy and short: five sections, one idea each. The detail from the overview document
-(the full technical breakdown, the economic and social contribution, the compliance paragraph) is
-compressed into the steps and the licensing line rather than given sections of its own — it can
-be expanded back out if the page ever needs to do more work.
+### Written here, not taken from the live site
 
-## The cloudy look
+- **Card 02 "Affordable Access"** — the live card's body was cut off mid-sentence in the
+  screenshot ("Working to make pricing that is…"). The line here is a stand-in written in the same
+  voice; replace it with the real one.
+- **Card 03 "Licensed & Compliant"** — not visible in the screenshots at all. This one is drawn
+  from the overview document's licensing section, so it's factual, but it may not be what the live
+  card says.
+- **The whole contact section** — form, details and headings, built in the same design language.
 
-- Sky gradients (`--sky-pale → --sky-tint → white`) on the hero and vision bands, white in between.
-- Soft SVG clouds, one shape (`<g id="cloud">`) reused at several scales and opacities, drifting
-  behind the content — never behind body copy, so nothing loses contrast.
-- A gentle wave divider where the hero's sky meets the white below it.
-- Big radii, hairline borders, wide-spread soft shadows, generous whitespace.
+## Design tokens
 
-## Brand
+Sampled from the live-site screenshots:
 
-Colors sampled from the supplied logo artwork, declared as tokens at the top of the file:
-
-| Token | Value | Where it comes from |
+| Token | Value | Used for |
 |---|---|---|
-| `--teal` | `#2888a0` | the `zumfi` wordmark |
-| `--sky` | `#63c4f2` | middle WiFi arc |
-| `--green` | `#58c2a4` | outer WiFi arc |
-| `--sun` | `#f2d183` | arc highlight |
+| `--blue` | `#489cd8` | primary buttons, links, "Within Reach.", eyebrow labels |
+| `--green` | `#54c09c` | accents, the launch pin, second arc |
+| `--yellow` | `#e4cc6c` | third arc, tag dots, warm accents |
+| `--ink` | `#18243c` | headings and the footer ground |
+| `--pale` | `#f0f7fc` | section wash |
 
-Type is **Nunito** (display — rounded terminals, matching the wordmark) over **Nunito Sans**
-(body), with a system sans fallback if Google Fonts is unavailable. The hero's broadcast arcs use
-the same green → sky → sun sweep as the logo.
+Recurring devices from the live site: gradient-dash eyebrows (blue → green → yellow), pill buttons
+with a corner arrow, the tri-colour rule between sections, and the logo's three arcs used as a
+watermark in the corner of each numbered card.
+
+**Fonts are a guess.** The live site's faces weren't identifiable from screenshots, so this uses
+**Figtree** (display — tight, geometric, close to the headings) over **Karla** (body). If you know
+what the real ones are, swapping the two names in `--fd` / `--fb` and the Google Fonts link is the
+whole change.
+
+## The cloudy treatment
+
+Soft SVG clouds — one shape (`<g id="cloud">`) reused at several scales and opacities — drift
+behind the hero, the neighbourhood illustration and the arches. They're kept clear of body copy so
+nothing loses contrast. The hero sky is a pale blue gradient that resolves to white at the rule.
+
+## Illustrations
+
+Both are inline SVG, no image files:
+
+- **Hero** — a neighbourhood of flat-roofed homes under a Sahel sky, with blue/green/yellow arcs of
+  connection linking the rooftops. Stands in for the live site's 3D village render.
+- **Mission** — three arches (a desk, a family at a table, a small shop) echoing the live site's
+  paper-cut illustration of everyday life.
 
 ## The form
 
@@ -57,14 +79,14 @@ Wired for **Netlify Forms** — the deploy target is Netlify, and this needs no 
 
 - `name="contact"`, `data-netlify="true"`, plus the hidden `form-name` input.
 - `netlify-honeypot="bot-field"` with an off-screen decoy field for spam.
-- Submissions appear under **Forms → contact** in the Netlify dashboard; add an email
-  notification there (Site settings → Forms → Form notifications) to have them forwarded.
+- Submissions appear under **Forms → contact** in the Netlify dashboard; add an email notification
+  there (Site settings → Forms → Form notifications) to have them forwarded.
 
 JavaScript posts it in place and swaps in a thank-you. Without JS it submits normally and Netlify
 shows its own success page. If the POST fails, an inline message falls back to email and phone.
 
 Fields: `name`, `email`, `phone` (optional), `area` (quartier — worth having, since it maps demand
-against future tower coverage), `message`.
+against future coverage), `message`.
 
 **Not deploying to Netlify?** Give the `<form>` an `action="https://…"` pointing at your endpoint
 (Formspree, Basin, a function) — the fetch handler reads `action` and needs no other change.
@@ -74,20 +96,6 @@ against future tower coverage), `message`.
 Drag this folder onto https://app.netlify.com/drop, or connect the repo and set the publish
 directory to `export/zumfi-site` with no build command.
 
-## Content source
-
-Copy is drawn from the *Company & Service Overview — Zumfi* document (Niamey, June 2026). The
-vision band is its §3 — dependable home connectivity at a price ordinary households can afford,
-closing the digital gap for communities today's networks don't reach.
-
-Nothing on the page claims the service is live: it says Zumfi is securing the licences and
-authorizations required to operate in Niger, which is what the document states.
-
-> Note: the page uses `sey182833@oru.edu` from the document, not the `seydoulevi1@gmail.com` on
-> the Levi Seydou photography site in this repo. It appears in four places if it needs changing.
-
-## Still open
-
-The live site at `zumfi.netlify.app` could not be reached from the environment this was built in
-(outbound network is blocked), so this is a fresh one-pager in the Zumfi brand rather than a match
-to whatever is deployed there today.
+> Note: the page uses `sey182833@oru.edu` from the overview document, not the
+> `seydoulevi1@gmail.com` on the Levi Seydou photography site in this repo. It appears in four
+> places if it needs changing.
