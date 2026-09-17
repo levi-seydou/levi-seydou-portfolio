@@ -114,7 +114,8 @@
   .place span { font-size: 16px; color: var(--muted); }
 
   .art-wrap { position: relative; }
-  .art { display: block; width: 100%; height: auto; border-radius: var(--r); box-shadow: var(--shadow); }
+  .art { display: block; width: 100%; height: auto; max-width: 100%; border-radius: var(--r);
+         background: #f4f1ec; box-shadow: var(--shadow); }
   .chip { position: absolute; right: -8px; bottom: -26px; display: flex; align-items: center; gap: 13px;
           background: #fff; border-radius: 20px; padding: 14px 22px 14px 14px; box-shadow: var(--shadow); }
   .chip .ic { width: 44px; height: 44px; border-radius: 14px; background: var(--blue); color: #fff; display: grid; place-items: center; flex: none; }
@@ -356,83 +357,8 @@
           </div>
 
           <div class="art-wrap">
-            <svg class="art" viewBox="0 0 560 400" role="img" aria-label="A neighbourhood of flat-roofed homes with glowing arcs of connection linking the rooftops">
-              <defs>
-                <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#d7ecfa"/><stop offset="62%" stop-color="#eaf5fc"/><stop offset="100%" stop-color="#f6fbfd"/>
-                </linearGradient>
-                <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#f6efe0"/><stop offset="100%" stop-color="#efe6d2"/>
-                </linearGradient>
-              </defs>
-
-              <rect width="560" height="400" fill="url(#skyg)"/>
-
-              <!-- clouds -->
-              <g fill="#ffffff" opacity=".92">
-                <g transform="translate(330 26) scale(.72)"><use href="#cloud"/></g>
-                <g transform="translate(24 64) scale(.46)"><use href="#cloud"/></g>
-              </g>
-              <!-- sun -->
-              <circle cx="497" cy="74" r="26" fill="#e4cc6c" opacity=".55"/>
-
-              <!-- ground -->
-              <path d="M0 300 C 120 286 200 292 290 296 C 380 300 470 292 560 284 L560 400 L0 400 Z" fill="url(#sand)"/>
-
-              <!-- arcs of connection -->
-              <g fill="none" stroke-linecap="round" stroke-width="4.5" opacity=".95">
-                <path d="M106 206 Q 190 118 272 176" stroke="#489cd8"/>
-                <path d="M272 176 Q 322 116 372 222" stroke="#54c09c"/>
-                <path d="M372 222 Q 424 158 466 244" stroke="#e4cc6c"/>
-              </g>
-              <g fill="#fff" stroke-width="3.5">
-                <circle cx="106" cy="206" r="5.5" stroke="#489cd8"/>
-                <circle cx="272" cy="176" r="5.5" stroke="#54c09c"/>
-                <circle cx="372" cy="222" r="5.5" stroke="#54c09c"/>
-                <circle cx="466" cy="244" r="5.5" stroke="#e4cc6c"/>
-              </g>
-
-              <!-- homes -->
-              <g>
-                <rect x="62"  y="206" width="88" height="96" rx="9" fill="#ffffff"/>
-                <rect x="62"  y="206" width="88" height="9"  rx="4.5" fill="#dceaf4"/>
-                <rect x="80"  y="232" width="24" height="22" rx="6" fill="#e3f0f8"/>
-                <rect x="114" y="232" width="24" height="22" rx="6" fill="#e3f0f8"/>
-                <rect x="94"  y="268" width="26" height="34" rx="6" fill="#489cd8" opacity=".85"/>
-
-                <rect x="158" y="238" width="62" height="64" rx="9" fill="#fbfcfd"/>
-                <rect x="158" y="238" width="62" height="8"  rx="4" fill="#dceaf4"/>
-                <rect x="176" y="258" width="26" height="22" rx="6" fill="#e9f4f0"/>
-
-                <rect x="228" y="176" width="92" height="126" rx="10" fill="#ffffff"/>
-                <rect x="228" y="176" width="92" height="9"  rx="4.5" fill="#dceaf4"/>
-                <rect x="246" y="202" width="24" height="22" rx="6" fill="#e3f0f8"/>
-                <rect x="280" y="202" width="24" height="22" rx="6" fill="#e3f0f8"/>
-                <rect x="246" y="238" width="24" height="22" rx="6" fill="#e3f0f8"/>
-                <rect x="280" y="238" width="24" height="22" rx="6" fill="#54c09c" opacity=".7"/>
-                <rect x="262" y="272" width="26" height="30" rx="6" fill="#489cd8" opacity=".85"/>
-
-                <rect x="330" y="222" width="80" height="80" rx="9" fill="#fbfcfd"/>
-                <rect x="330" y="222" width="80" height="8"  rx="4" fill="#dceaf4"/>
-                <rect x="348" y="244" width="24" height="22" rx="6" fill="#e3f0f8"/>
-                <rect x="380" y="244" width="22" height="22" rx="6" fill="#e4cc6c" opacity=".55"/>
-
-                <rect x="424" y="244" width="76" height="58" rx="9" fill="#ffffff"/>
-                <rect x="424" y="244" width="76" height="8"  rx="4" fill="#dceaf4"/>
-                <rect x="442" y="264" width="24" height="20" rx="6" fill="#e3f0f8"/>
-                <rect x="474" y="264" width="18" height="20" rx="6" fill="#e9f4f0"/>
-              </g>
-
-              <!-- trees -->
-              <g>
-                <rect x="222" y="286" width="5" height="16" rx="2.5" fill="#b89b6e"/>
-                <circle cx="224.5" cy="280" r="15" fill="#54c09c" opacity=".85"/>
-                <rect x="416" y="288" width="5" height="14" rx="2.5" fill="#b89b6e"/>
-                <circle cx="418.5" cy="282" r="12" fill="#54c09c" opacity=".7"/>
-                <rect x="40"  y="290" width="4" height="12" rx="2" fill="#b89b6e"/>
-                <circle cx="42" cy="285" r="10" fill="#54c09c" opacity=".6"/>
-              </g>
-            </svg>
+            <img class="art" src="assets/hero-village.jpg" width="1000" height="812"
+                 alt="An aerial view of a neighbourhood of flat-roofed homes and trees, with glowing arcs of connection linking the rooftops">
 
             <div class="chip">
               <span class="ic" aria-hidden="true">
@@ -471,46 +397,8 @@
         </div>
 
         <div>
-          <svg viewBox="0 0 460 380" style="width:100%; height:auto; border-radius:var(--r); box-shadow:var(--shadow);"
-               role="img" aria-label="Arches framing a home desk, a family at a table and a small shop — everyday life connected">
-            <rect width="460" height="380" fill="#f7f5ee"/>
-            <path d="M0 300 C 110 276 250 318 460 288 L460 380 L0 380 Z" fill="#e8f3ef"/>
-            <path d="M0 330 C 140 312 300 346 460 322 L460 380 L0 380 Z" fill="#dceaf4" opacity=".8"/>
-            <circle cx="392" cy="70" r="24" fill="#e4cc6c" opacity=".85"/>
-            <g fill="#fff" opacity=".95">
-              <g transform="translate(250 34) scale(.42)"><use href="#cloud"/></g>
-              <g transform="translate(24 58) scale(.32)"><use href="#cloud"/></g>
-            </g>
-            <!-- three arches -->
-            <g>
-              <path d="M40 300 L40 168 A 62 62 0 0 1 164 168 L164 300 Z" fill="#489cd8"/>
-              <path d="M56 300 L56 172 A 46 46 0 0 1 148 172 L148 300 Z" fill="#dbeaf6"/>
-              <rect x="78" y="192" width="46" height="6" rx="3" fill="#2f7fb8" opacity=".3"/>
-              <rect x="88" y="212" width="30" height="16" rx="3" fill="#2f7fb8" opacity=".45"/>
-              <rect x="70" y="230" width="64" height="7" rx="3.5" fill="#2f7fb8" opacity=".6"/>
-              <rect x="76" y="237" width="5" height="26" rx="2.5" fill="#2f7fb8" opacity=".4"/>
-              <rect x="123" y="237" width="5" height="26" rx="2.5" fill="#2f7fb8" opacity=".4"/>
-              <rect x="94" y="248" width="18" height="24" rx="5" fill="#2f7fb8" opacity=".35"/>
-
-              <path d="M170 300 L170 152 A 66 66 0 0 1 302 152 L302 300 Z" fill="#54c09c"/>
-              <path d="M186 300 L186 158 A 50 50 0 0 1 286 158 L286 300 Z" fill="#e4f4ee"/>
-              <path d="M236 158 L236 186" stroke="#3aa483" stroke-width="3" opacity=".4"/>
-              <path d="M224 198 L248 198 L242 186 L230 186 Z" fill="#3aa483" opacity=".45"/>
-              <ellipse cx="236" cy="242" rx="42" ry="9" fill="#3aa483" opacity=".45"/>
-              <rect x="232" y="242" width="8" height="30" rx="3" fill="#3aa483" opacity=".45"/>
-              <circle cx="212" cy="222" r="11" fill="#3aa483" opacity=".5"/>
-              <circle cx="236" cy="216" r="11" fill="#3aa483" opacity=".5"/>
-              <circle cx="260" cy="222" r="11" fill="#3aa483" opacity=".5"/>
-
-              <path d="M308 300 L308 190 A 52 52 0 0 1 412 190 L412 300 Z" fill="#e4cc6c"/>
-              <path d="M322 300 L322 196 A 38 38 0 0 1 398 196 L398 300 Z" fill="#fbf4de"/>
-              <rect x="334" y="214" width="52" height="16" rx="5" fill="#489cd8" opacity=".6"/>
-              <g fill="#fff" opacity=".75">
-                <rect x="344" y="214" width="9" height="16"/><rect x="362" y="214" width="9" height="16"/>
-              </g>
-              <rect x="340" y="248" width="40" height="24" rx="5" fill="#b79a33" opacity=".35"/>
-            </g>
-          </svg>
+          <img class="art" src="assets/mission-arches.jpg" width="1000" height="783"
+               alt="Three arches opening onto everyday life: a home desk, a family at a table, and a small shop">
         </div>
       </div>
     </div>

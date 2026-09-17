@@ -6,12 +6,28 @@ Niamey, Niger. No build step, no framework, no dependencies: `index.html` is sel
 stylesheet.
 
 ```
-index.html                 the whole site
-assets/zumfi-logo.png      primary lockup — arcs + wordmark, transparent ground
-assets/zumfi-icon.png      app icon, 512×512, rounded corners baked into the alpha
-assets/zumfi-icon-180.png  apple-touch-icon
-assets/favicon.png         32×32 favicon
+index.html                    the whole site
+assets/zumfi-logo.png         primary lockup — arcs + wordmark, transparent ground
+assets/zumfi-icon.png         app icon, 512×512, rounded corners baked into the alpha
+assets/zumfi-icon-180.png     apple-touch-icon
+assets/favicon.png            32×32 favicon
+assets/hero-village.jpg       hero artwork — supplied, cropped to the art
+assets/mission-arches.jpg     mission artwork — supplied, cropped to the art
 ```
+
+## Illustrations
+
+The hero and mission illustrations are the real artwork, supplied as images: cropped to the
+artwork's bounding box (the paper ground around it trimmed), scaled to 1000px wide and saved as
+progressive JPEG at ~100 KB each. `.art` sets the frame — rounded corners, a soft shadow and a
+`#f4f1ec` ground so the crop blends into its own paper.
+
+> The sources were phone-sized (474px wide), so they were upscaled to 1000px and are slightly
+> soft at full width. Drop the original exports over `assets/hero-village.jpg` and
+> `assets/mission-arches.jpg` — same filenames, no markup change — and they sharpen up.
+
+The launch panel's aerial of Niamey is still an inline SVG standing in for the painted original,
+which wasn't supplied.
 
 ## Built to match the live site
 
