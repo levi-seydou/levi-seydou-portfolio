@@ -7,7 +7,7 @@ stylesheet.
 
 ```
 index.html                    the whole site
-assets/zumfi-logo.png         primary lockup — arcs + wordmark, transparent ground
+assets/zumfi-logo.png         primary lockup — wordmark recoloured to the site blue
 assets/zumfi-icon.png         app icon, 512×512, rounded corners baked into the alpha
 assets/zumfi-icon-180.png     apple-touch-icon
 assets/favicon.png            32×32 favicon
@@ -61,7 +61,7 @@ Sampled from the live-site screenshots:
 
 | Token | Value | Used for |
 |---|---|---|
-| `--blue` | `#489cd8` | primary buttons, links, "Within Reach.", eyebrow labels |
+| `--blue` | `#489cd8` | primary buttons, links, "Within Reach.", eyebrow labels, the wordmark |
 | `--green` | `#54c09c` | accents, the launch pin, second arc |
 | `--yellow` | `#e4cc6c` | third arc, tag dots, warm accents |
 | `--ink` | `#18243c` | headings and the footer ground |
@@ -70,6 +70,11 @@ Sampled from the live-site screenshots:
 Recurring devices from the live site: gradient-dash eyebrows (blue → green → yellow), pill buttons
 with a corner arrow, the tri-colour rule between sections, and the logo's three arcs used as a
 watermark in the corner of each numbered card.
+
+The `zumfi` wordmark in `assets/zumfi-logo.png` was supplied in teal (`#2888a0`) and has been
+recoloured to the site blue — hue rotated 192° → 205° with lightness mapped so antialiased edges
+stay clean, applied only below the arcs so the three-colour mark is untouched. Its solid pixels now
+read `#4b9ed6`, matching the buttons beside it.
 
 **Fonts are still a guess.** The live site's faces weren't identifiable from screenshots, so this uses
 **Figtree** (display — tight, geometric, close to the headings) over **Karla** (body). If you know
