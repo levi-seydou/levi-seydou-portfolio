@@ -76,6 +76,11 @@ recoloured to the site blue — hue rotated 192° → 205° with lightness mappe
 stay clean, applied only below the arcs so the three-colour mark is untouched. Its solid pixels now
 read `#4b9ed6`, matching the buttons beside it.
 
+Every colour in the lockup is also floored for lightness, so nothing in it reads dark: the arcs
+sit at or above HSL L 0.62 and the wordmark at or above L 0.54, with saturation eased slightly on
+lifted pixels so they don't go neon. The darkest pixel in the file is L 0.54; there were dark
+navy-teal segments in the arc gradients (`#2080b0`) before.
+
 **Fonts are still a guess.** The live site's faces weren't identifiable from screenshots, so this uses
 **Figtree** (display — tight, geometric, close to the headings) over **Karla** (body). If you know
 what the real ones are, swapping the two names in `--fd` / `--fb` and the Google Fonts link is the
