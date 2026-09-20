@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zumfi — Reliable Internet. Within Reach.</title>
+<meta name="description" content="Zumfi is working to make fast, reliable and affordable home internet more accessible to families and communities in Niger. Preparing to launch in Niamey.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/zumfi-icon-180.png">
+<meta property="og:title" content="Zumfi — Reliable Internet. Within Reach.">
+<meta property="og:description" content="Home internet, thoughtfully built for everyday life. Preparing to launch in Niamey, Niger.">
+<meta property="og:image" content="assets/zumfi-icon.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:      #489cd8;
+    --blue-deep: #2f7fb8;
+    --green:     #54c09c;
+    --yellow:    #e4cc6c;
+    --ink:       #18243c;
+    --body:      #5a6e80;
+    --muted:     #8699a8;
+    --line:      #e3edf4;
+    --pale:      #f0f7fc;
+    --pale-2:    #e7f2f9;
+    --white:     #fff;
+    --r:         28px;
+    --shadow:    0 2px 8px rgba(24,36,60,.04), 0 20px 50px -22px rgba(24,36,60,.20);
+    --shadow-sm: 0 1px 3px rgba(24,36,60,.05), 0 10px 26px -14px rgba(24,36,60,.18);
+    --fd: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --fb: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --gutter: 22px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: var(--fb); font-size: 17px; line-height: 1.72; color: var(--body); background: var(--white); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--fd); color: var(--ink); margin: 0; letter-spacing: -0.035em; line-height: 1.08; font-weight: 800; }
+  p { margin: 0; }
+  a { color: var(--blue-deep); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+  .narrow { max-width: 740px; }
+
+  /* ---------- bits ---------- */
+  .eyebrow { display: flex; align-items: center; gap: 12px; font-family: var(--fd); font-weight: 700;
+             font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
+  .eyebrow::before { content: ""; width: 44px; height: 4px; border-radius: 2px;
+                     background: linear-gradient(90deg, var(--blue) 0%, var(--green) 55%, var(--yellow) 100%); }
+  .eyebrow.mid { justify-content: center; }
+  h1 { font-size: clamp(40px, 5.4vw, 62px); }
+  h2 { font-size: clamp(31px, 4.1vw, 48px); }
+  h3 { font-size: 21px; letter-spacing: -0.02em; }
+  .lead { font-size: clamp(17px, 1.45vw, 19.5px); margin-top: 22px; }
+  .center { text-align: center; }
+  .center .eyebrow { justify-content: center; }
+
+  .badge { display: inline-flex; align-items: center; gap: 11px; background: var(--white); border: 1px solid var(--line);
+           border-radius: 999px; padding: 11px 22px 11px 16px; font-family: var(--fd); font-weight: 700; font-size: 15.5px;
+           color: var(--blue-deep); box-shadow: var(--shadow-sm); }
+  .badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(84,192,156,.22); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--fd);
+         font-weight: 700; font-size: 16px; line-height: 1; padding: 17px 28px; border-radius: 999px;
+         border: 1.5px solid transparent; text-decoration: none; cursor: pointer;
+         transition: background-color .2s, color .2s, border-color .2s, transform .2s; }
+  .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 14px 30px -14px rgba(72,156,216,.9); }
+  .btn-primary:hover { background: var(--blue-deep); transform: translateY(-1px); }
+  .btn-ghost { background: var(--white); color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue-deep); }
+  .btn-sm { padding: 12px 22px; font-size: 15px; }
+  .btn svg { flex: none; opacity: .9; }
+  .btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid rgba(72,156,216,.5); outline-offset: 3px; }
+  .skip { position: absolute; left: -9999px; background: #fff; padding: 12px 18px; font-family: var(--fd); font-weight: 700; z-index: 100; }
+  .skip:focus { left: 0; }
+
+  /* tri-colour rule */
+  .rule { height: 6px; display: flex; }
+  .rule i { flex: 1; }
+  .rule i:nth-child(1) { background: var(--blue); }
+  .rule i:nth-child(2) { background: var(--green); }
+  .rule i:nth-child(3) { background: var(--yellow); }
+
+  /* ---------- header ---------- */
+  .site-header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .site-header .wrap { display: flex; align-items: center; gap: 18px; height: 78px; }
+  .brand img { height: 40px; width: auto; display: block; }
+  .nav { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+  .nav a { font-family: var(--fd); font-weight: 600; font-size: 15.5px; color: var(--ink); text-decoration: none; }
+  .nav a:hover { color: var(--blue); }
+
+  /* ---------- sky + clouds ---------- */
+  .sky { position: relative; overflow: hidden;
+         background: linear-gradient(180deg, var(--pale) 0%, #f7fbfe 58%, var(--white) 100%); }
+  .clouds { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .clouds svg { position: absolute; fill: #fff; }
+  .k1 { top: 6%;  left: -5%; width: 300px; opacity: .9; }
+  .k2 { top: 30%; right: -4%; width: 360px; opacity: .65; }
+  .k3 { bottom: 12%; left: 34%; width: 220px; opacity: .5; }
+  .sky > * { position: relative; z-index: 1; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 74px 0 86px; }
+  .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+  .hero h1 { margin-top: 26px; }
+  .hero h1 .b2 { color: var(--blue); display: block; }
+  .hero .lead { max-width: 46ch; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 36px; }
+  .place { display: flex; gap: 15px; align-items: flex-start; margin-top: 40px; }
+  .place .pin { flex: none; width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center;
+                background: rgba(84,192,156,.14); color: #3aa483; }
+  .place strong { display: block; font-family: var(--fd); font-weight: 700; color: var(--ink); font-size: 17.5px; }
+  .place span { font-size: 16px; color: var(--muted); }
+
+  .art-wrap { position: relative; }
+  .art { display: block; width: 100%; height: auto; max-width: 100%; border-radius: var(--r);
+         background: #f4f1ec; box-shadow: var(--shadow); }
+  .chip { position: absolute; right: -8px; bottom: -26px; display: flex; align-items: center; gap: 13px;
+          background: #fff; border-radius: 20px; padding: 14px 22px 14px 14px; box-shadow: var(--shadow); }
+  .chip .ic { width: 44px; height: 44px; border-radius: 14px; background: var(--blue); color: #fff; display: grid; place-items: center; flex: none; }
+  .chip .k, .chip .v { display: block; }
+  .chip .k { font-family: var(--fd); font-weight: 700; font-size: 11.5px; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); }
+  .chip .v { font-family: var(--fd); font-weight: 700; color: var(--ink); font-size: 17px; }
+
+  /* ---------- sections ---------- */
+  .section { padding: 104px 0; }
+  .section-pale { background: var(--pale); }
+  .section-head { margin-bottom: 54px; }
+  .section-head .lead { margin-top: 18px; }
+
+  /* mission */
+  .mission-copy p + p { margin-top: 20px; }
+  .mission-copy .big { font-size: 18px; }
+  .focus { display: flex; gap: 14px; align-items: flex-start; margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--line); }
+  .focus svg { flex: none; margin-top: 4px; color: var(--green); }
+  .focus strong { font-family: var(--fd); font-weight: 700; color: var(--ink); }
+  .tags { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 22px;
+          font-family: var(--fd); font-weight: 600; color: var(--ink); font-size: 15.5px; }
+  .tags i { width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); display: block; }
+  .mission-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+
+  /* numbered cards */
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .card { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--line);
+          border-radius: var(--r); padding: 30px 26px 34px; box-shadow: var(--shadow-sm); }
+  .card .n { position: absolute; top: 28px; right: 30px; font-family: var(--fd); font-weight: 800; font-size: 15px; color: #c3d5e2; }
+  .card .ic { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; margin-bottom: 38px; }
+  .card:nth-child(1) .ic { background: rgba(72,156,216,.13); color: var(--blue); }
+  .card:nth-child(2) .ic { background: rgba(84,192,156,.15); color: #3aa483; }
+  .card:nth-child(3) .ic { background: rgba(228,204,108,.22); color: #b79a33; }
+  .card:nth-child(4) .ic { background: rgba(90,110,128,.12); color: #5a6e80; }
+  .card:nth-child(1) .arcs { color: #489cd8; }
+  .card:nth-child(2) .arcs { color: #54c09c; }
+  .card:nth-child(3) .arcs { color: #e4cc6c; }
+  .card:nth-child(4) .arcs { color: #b9c9d4; }
+  .card h3 { margin-bottom: 10px; font-size: 19.5px; }
+  .card p { font-size: 15.5px; }
+  .card .arcs { position: absolute; right: -30px; bottom: 0; width: 158px; opacity: .45; }
+
+  /* ---------- why connectivity matters ---------- */
+  .eyebrow.gold { color: #b79a33; }
+  .eyebrow.mint { color: #7ad6b4; }
+  .eyebrow.mint::before { background: linear-gradient(90deg, #7fc4ea 0%, #7ad6b4 55%, #f0dc9a 100%); }
+  .quote { border-left: 4px solid var(--yellow); padding: 4px 0 4px 24px; font-size: 18.5px; max-width: 62ch; }
+  .rows { margin-top: 52px; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 44px 62px 1fr 28px; gap: 4px; align-items: start;
+         padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .row .num { font-family: var(--fd); font-weight: 700; font-size: 14px; color: #a9bdcb; padding-top: 14px; }
+  .row .ic { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center;
+             background: rgba(72,156,216,.11); color: var(--blue); }
+  .row h3 { font-size: 20px; margin-bottom: 6px; }
+  .row p { font-size: 16px; max-width: 54ch; }
+  .row .go { color: var(--blue); padding-top: 12px; justify-self: end; }
+
+  /* ---------- launching panel ---------- */
+  .panel { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); position: relative; }
+  .panel > svg { display: block; width: 100%; height: auto; }
+  .panel .chip2 { position: absolute; left: 26px; top: 210px; display: flex; gap: 13px; align-items: center;
+                  background: rgba(255,255,255,.95); border-radius: 999px; padding: 12px 24px 12px 16px; box-shadow: var(--shadow-sm); }
+  .panel .chip2 svg { color: var(--ink); flex: none; }
+  .panel .chip2 strong { display: block; font-family: var(--fd); font-weight: 700; color: var(--ink); font-size: 16.5px; }
+  .panel .chip2 span { font-size: 15px; color: var(--muted); }
+  .panel-dark { background: var(--ink); color: #c3d2e0; padding: 52px 54px 56px; position: relative; overflow: hidden; }
+  .panel-dark h2 { color: #fff; margin-bottom: 20px; }
+  .panel-dark p { max-width: 58ch; font-size: 17.5px; }
+  .panel-dark .deco { position: absolute; right: 34px; top: 30px; width: 190px; opacity: .55; }
+  .tags-dot { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 26px;
+              font-family: var(--fd); font-weight: 700; font-size: 15.5px; color: #e7eef5; }
+  .tags-dot span { display: flex; align-items: center; gap: 10px; }
+  .tags-dot i { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); }
+  .btn-white { background: #fff; color: var(--ink); margin-top: 32px; }
+  .btn-white:hover { background: #eaf3f9; transform: translateY(-1px); }
+
+  /* ---------- contact ---------- */
+  .contact-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r);
+                  box-shadow: var(--shadow); padding: 44px; position: relative; overflow: hidden; }
+  .contact-card > .arcs { position: absolute; right: -40px; bottom: -14px; width: 190px; opacity: .3; color: var(--green); }
+  .contact-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 52px; align-items: start; position: relative; z-index: 1; }
+  .reach { text-decoration: none; display: flex; gap: 16px; align-items: center; padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid var(--line); }
+  .reach .ic { flex: none; width: 58px; height: 58px; border-radius: 19px; background: var(--blue); color: #fff; display: grid; place-items: center; }
+  .reach strong { display: block; font-family: var(--fd); font-weight: 700; font-size: 18px; color: var(--ink); }
+  .reach a { font-size: 16.5px; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+  .reach .go { margin-left: auto; width: 46px; height: 46px; border-radius: 50%; background: rgba(72,156,216,.12);
+               color: var(--blue); display: grid; place-items: center; flex: none; }
+  .field { margin-bottom: 18px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  label { display: block; font-family: var(--fd); font-weight: 700; font-size: 14.5px; color: var(--ink); margin-bottom: 8px; }
+  label .opt { font-weight: 400; color: var(--muted); font-size: 13.5px; }
+  input, textarea { width: 100%; font-family: var(--fb); font-size: 16px; color: var(--ink); background: #fff;
+                    border: 1.5px solid var(--line); border-radius: 16px; padding: 14px 16px;
+                    transition: border-color .18s, box-shadow .18s; }
+  input::placeholder, textarea::placeholder { color: #a7bccb; }
+  input:hover, textarea:hover { border-color: #cfe1ee; }
+  input:focus, textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(72,156,216,.16); }
+  textarea { min-height: 142px; resize: vertical; line-height: 1.65; }
+  .hp { position: absolute; left: -9999px; opacity: 0; }
+  .form-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 26px; }
+  .form-foot .note { font-size: 14.5px; color: var(--muted); }
+  .form-status { margin-top: 16px; font-family: var(--fd); font-weight: 700; font-size: 15px; }
+  .form-status.error { color: #c0492f; }
+  .form-status:empty { margin: 0; }
+  .sent { display: none; padding: 18px 0; }
+  .sent.show { display: block; }
+  .sent h3 { margin-bottom: 10px; }
+  form.hide { display: none; }
+  .detail { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 26px; }
+  .detail:last-child { margin-bottom: 0; }
+  .detail .ic { flex: none; width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center; background: var(--pale-2); color: var(--blue-deep); }
+  .detail .k { font-family: var(--fd); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .detail .v { font-family: var(--fd); font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; word-break: break-word; }
+  a.v:hover { color: var(--blue); }
+  .detail .v small { display: block; font-family: var(--fb); font-weight: 400; font-size: 15px; color: var(--muted); }
+
+  /* ---------- footer ---------- */
+  .site-footer { background: var(--ink); color: #b9c7d6; }
+  .site-footer .wrap { padding: 54px var(--gutter) 40px; }
+  .foot-logo { background: #fff; border-radius: 14px; padding: 12px 18px; display: inline-block; }
+  .foot-logo img { height: 40px; width: auto; display: block; }
+  .foot-tag { margin-top: 18px; font-family: var(--fd); font-weight: 600; color: #fff; font-size: 17px; }
+  .foot-nav { display: flex; flex-wrap: wrap; gap: 14px 34px; margin-top: 30px; }
+  .foot-nav a { font-family: var(--fd); font-weight: 700; font-size: 16px; color: #dbe6f0; text-decoration: none; }
+  .foot-nav a:hover { color: #fff; }
+  .foot-base { margin-top: 32px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.12);
+               display: flex; flex-wrap: wrap; gap: 10px 30px; justify-content: space-between; font-size: 14.5px; color: #8fa1b3; }
+  .foot-base .where { display: flex; align-items: center; gap: 9px; }
+  .foot-base a { color: #dbe6f0; text-decoration: none; font-weight: 600; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 940px) {
+    .hero-grid, .mission-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
+    .cards { grid-template-columns: 1fr; }
+    .art-wrap { max-width: 520px; margin: 0 auto; }
+    .chip { right: 8px; }
+    .nav a { display: none; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .panel-dark { padding: 40px 30px 44px; }
+    .panel-dark .deco { display: none; }
+    .contact-card { padding: 32px 26px; }
+    .section { padding: 76px 0; }
+    .hero { padding: 54px 0 76px; }
+    .k2, .k3 { display: none; }
+  }
+  @media (max-width: 560px) {
+    :root { --gutter: 18px; --r: 22px; }
+    body { font-size: 16.5px; }
+    .site-header .wrap { height: 68px; }
+    .brand img { height: 34px; }
+    .card { padding: 26px 22px 30px; }
+    .cards { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 34px 1fr; gap: 6px 12px; padding: 24px 0; }
+    .row .ic, .row .go { display: none; }
+    .quote { padding-left: 18px; font-size: 17px; }
+    .panel .chip2 { left: 16px; top: 150px; padding: 10px 18px 10px 12px; }
+    .contact-card { padding: 26px 20px; }
+    .card .ic { margin-bottom: 30px; }
+    .row-2 { grid-template-columns: 1fr; gap: 0; }
+    .hero-cta .btn, .form-foot .btn { width: 100%; }
+    .section { padding: 60px 0; }
+    .site-footer .wrap { flex-direction: column; align-items: flex-start; }
+    .fc { text-align: left; }
+    .chip { position: static; margin-top: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="cloud">
+    <ellipse cx="62" cy="54" rx="52" ry="30"/><ellipse cx="112" cy="40" rx="44" ry="34"/>
+    <ellipse cx="160" cy="56" rx="46" ry="28"/><ellipse cx="206" cy="62" rx="38" ry="22"/>
+    <rect x="54" y="60" width="176" height="26" rx="13"/>
+  </g>
+  <g id="arcmark" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="7">
+    <path d="M8 74 A 34 34 0 0 1 76 74"/>
+    <path d="M66 74 A 30 30 0 0 1 126 74"/>
+    <path d="M116 74 A 26 26 0 0 1 168 74"/>
+  </g>
+  <g id="arctri" fill="none" stroke-linecap="round" stroke-width="7">
+    <path d="M8 74 A 34 34 0 0 1 76 74" stroke="#489cd8"/>
+    <path d="M66 74 A 30 30 0 0 1 126 74" stroke="#54c09c"/>
+    <path d="M116 74 A 26 26 0 0 1 168 74" stroke="#e4cc6c"/>
+  </g>
+</defs></svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Zumfi — home"><img src="assets/zumfi-logo.png" alt="Zumfi"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#mission">Our mission</a>
+      <a href="#building">What we're building</a>
+      <a href="#why">Why it matters</a>
+      <a class="btn btn-primary btn-sm" href="#contact">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= hero ================= -->
+  <div class="sky" id="top">
+    <div class="clouds" aria-hidden="true">
+      <svg class="k1" viewBox="0 0 260 90"><use href="#cloud"/></svg>
+      <svg class="k2" viewBox="0 0 260 90"><use href="#cloud"/></svg>
+      <svg class="k3" viewBox="0 0 260 90"><use href="#cloud"/></svg>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="badge"><span class="dot"></span> Preparing to launch in Niamey</p>
+            <h1>Reliable Internet. <span class="b2">Within Reach.</span></h1>
+            <p class="lead">
+              Zumfi is working to make fast, reliable and affordable home internet more accessible
+              to families and communities in Niger.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#mission">
+                Learn About Zumfi
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="#contact">
+                Contact Us
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
+              </a>
+            </div>
+            <div class="place">
+              <span class="pin" aria-hidden="true">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span><strong>Launching in Niamey, Niger</strong>
+              <span>Home internet, thoughtfully built for everyday life.</span></span>
+            </div>
+          </div>
+
+          <div class="art-wrap">
+            <img class="art" src="assets/hero-village.jpg" width="1000" height="812"
+                 alt="An aerial view of a neighbourhood of flat-roofed homes and trees, with glowing arcs of connection linking the rooftops">
+
+            <div class="chip">
+              <span class="ic" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
+              </span>
+              <span><span class="k">Coming soon</span><span class="v">Niamey, Niger</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rule" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <!-- ================= mission ================= -->
+  <section class="section" id="mission">
+    <div class="wrap">
+      <div class="mission-grid">
+        <div class="mission-copy">
+          <p class="eyebrow">Our mission</p>
+          <h2>Internet should open doors, not create barriers.</h2>
+          <p class="big" style="margin-top:26px;">
+            For many families and communities in Niger, dependable home internet can still be slow,
+            unreliable, or too expensive. Zumfi is being built to help change that.
+          </p>
+          <p class="big">
+            Our mission is to make reliable home connectivity more accessible and affordable, giving
+            more people the opportunity to learn, work, communicate, build businesses, and stay connected.
+          </p>
+          <p class="focus">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+            <span><strong>Focused on everyday households.</strong> Beginning with the needs of
+            communities that have limited dependable connectivity options.</span>
+          </p>
+          <p class="tags">At home <i></i> For learning <i></i> For local work</p>
+        </div>
+
+        <div>
+          <img class="art" src="assets/mission-arches.jpg" width="1000" height="783"
+               alt="Three arches opening onto everyday life: a home desk, a family at a table, and a small shop">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= what we're building ================= -->
+  <section class="section section-pale" id="building">
+    <div class="wrap">
+      <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
+        <p class="eyebrow">What we're building</p>
+        <h2>Built for everyday connectivity.</h2>
+        <p class="lead">A practical, local approach to helping more homes get online with confidence.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <span class="n">01</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/></svg>
+          </span>
+          <h3>Reliable Home Internet</h3>
+          <p>Designed to provide households with dependable connectivity for everyday online needs.</p>
+          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+        <div class="card">
+          <span class="n">02</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </span>
+          <h3>Affordable Access</h3>
+          <p>Working toward service that is financially accessible to more families and communities.</p>
+          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+        <div class="card">
+          <span class="n">03</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </span>
+          <h3>Simple Home WiFi</h3>
+          <p>Connectivity designed around the way families actually use the internet at home.</p>
+          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+        <div class="card">
+          <span class="n">04</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3>Built for Niger</h3>
+          <p>Beginning in Niamey with a long-term vision of helping expand connectivity to more communities.</p>
+          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= why connectivity matters ================= -->
+  <section class="section" id="why">
+    <div class="wrap">
+      <p class="eyebrow gold">Why connectivity matters</p>
+      <h2>More than just WiFi.</h2>
+      <p class="quote" style="margin-top:28px;">
+        Dependable home internet can help unlock useful everyday possibilities.
+        That is the future Zumfi is preparing for.
+      </p>
+
+      <div class="rows">
+        <div class="row">
+          <span class="num">01</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <div>
+            <h3>Education</h3>
+            <p>Helping students access learning resources, research, online courses, and educational opportunities.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <div class="row">
+          <span class="num">02</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </span>
+          <div>
+            <h3>Work &amp; Business</h3>
+            <p>Giving entrepreneurs, professionals, and small businesses better access to digital tools and markets.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <div class="row">
+          <span class="num">03</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z"/></svg>
+          </span>
+          <div>
+            <h3>Communication</h3>
+            <p>Helping families and communities stay connected locally and internationally.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <div class="row">
+          <span class="num">04</span>
+          <span class="ic" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/><path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+          </span>
+          <div>
+            <h3>Opportunity</h3>
+            <p>Making it easier for people to participate in an increasingly digital economy.</p>
+          </div>
+          <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= launching in Niamey ================= -->
+  <section class="section section-pale" id="niamey">
+    <div class="wrap">
+      <div class="panel">
+        <svg viewBox="0 0 1040 460" role="img" aria-label="An aerial view of Niamey at golden hour, with ribbons of connection flowing over the rooftops">
+          <defs>
+            <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#bcd9ee"/><stop offset="46%" stop-color="#ecdcb8"/><stop offset="100%" stop-color="#e8cfa0"/>
+            </linearGradient>
+            <linearGradient id="earth" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e3c391"/><stop offset="100%" stop-color="#cfa469"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="1040" height="460" fill="url(#dusk)"/>
+          <circle cx="852" cy="118" r="34" fill="#f6e2ae" opacity=".9"/>
+          <g fill="#fff" opacity=".85">
+            <g transform="translate(120 44) scale(.5)"><use href="#cloud"/></g>
+            <g transform="translate(560 30) scale(.66)"><use href="#cloud"/></g>
+            <g transform="translate(820 58) scale(.4)"><use href="#cloud"/></g>
+          </g>
+
+          <!-- river + far bank -->
+          <path d="M0 196 C 220 182 420 206 620 194 C 790 184 920 190 1040 184 L1040 214 L0 214 Z" fill="#a9cbd8" opacity=".85"/>
+          <path d="M0 214 L1040 214 L1040 240 L0 244 Z" fill="#d8c69c"/>
+
+          <!-- ground -->
+          <path d="M0 238 L1040 232 L1040 460 L0 460 Z" fill="url(#earth)"/>
+
+          <!-- distant town, hazed back -->
+          <g fill="#cfae7e" opacity=".55">
+            <rect x="40"  y="204" width="52" height="36" rx="4"/><rect x="108" y="212" width="40" height="28" rx="4"/>
+            <rect x="196" y="202" width="58" height="38" rx="4"/><rect x="286" y="212" width="44" height="28" rx="4"/>
+            <rect x="380" y="204" width="50" height="36" rx="4"/><rect x="470" y="212" width="42" height="28" rx="4"/>
+            <rect x="560" y="202" width="56" height="38" rx="4"/><rect x="660" y="212" width="46" height="28" rx="4"/>
+            <rect x="760" y="204" width="52" height="36" rx="4"/><rect x="856" y="212" width="44" height="28" rx="4"/>
+            <rect x="940" y="202" width="58" height="38" rx="4"/>
+          </g>
+
+          <!-- mid rooftops -->
+          <g>
+            <rect x="24" y="254" width="150" height="86" rx="7" fill="#e0bd8c"/>
+            <rect x="24" y="254" width="150" height="11" rx="5" fill="#f0d6ab"/>
+            <rect x="24" y="334" width="150" height="6" fill="#00000010"/>
+            <rect x="48" y="284" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="86" y="284" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="124" y="284" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="84" y="302" width="30" height="38" rx="5" fill="#6fb0c6"/>
+            <rect x="128" y="234" width="30" height="22" rx="6" fill="#f0d6ab"/>
+            <rect x="134" y="226" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="196" y="268" width="120" height="72" rx="7" fill="#d8b07d"/>
+            <rect x="196" y="268" width="120" height="11" rx="5" fill="#e9cda0"/>
+            <rect x="196" y="334" width="120" height="6" fill="#00000010"/>
+            <rect x="223" y="298" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="263" y="298" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="336" y="250" width="164" height="90" rx="7" fill="#e4c495"/>
+            <rect x="336" y="250" width="164" height="11" rx="5" fill="#f4ddb4"/>
+            <rect x="336" y="334" width="164" height="6" fill="#00000010"/>
+            <rect x="356" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="389" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="421" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="454" y="280" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="403" y="302" width="30" height="38" rx="5" fill="#79b9a4"/>
+            <rect x="520" y="270" width="128" height="70" rx="7" fill="#d4aa74"/>
+            <rect x="520" y="270" width="128" height="11" rx="5" fill="#e6c89a"/>
+            <rect x="520" y="334" width="128" height="6" fill="#00000010"/>
+            <rect x="539" y="300" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="571" y="300" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="603" y="300" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="602" y="250" width="30" height="22" rx="6" fill="#e6c89a"/>
+            <rect x="608" y="242" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="668" y="252" width="150" height="88" rx="7" fill="#e0bd8c"/>
+            <rect x="668" y="252" width="150" height="11" rx="5" fill="#f0d6ab"/>
+            <rect x="668" y="334" width="150" height="6" fill="#00000010"/>
+            <rect x="692" y="282" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="730" y="282" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="768" y="282" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="728" y="302" width="30" height="38" rx="5" fill="#6fb0c6"/>
+            <rect x="838" y="266" width="140" height="74" rx="7" fill="#d8b07d"/>
+            <rect x="838" y="266" width="140" height="11" rx="5" fill="#e9cda0"/>
+            <rect x="838" y="334" width="140" height="6" fill="#00000010"/>
+            <rect x="860" y="296" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="895" y="296" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="930" y="296" width="26" height="24" rx="5" fill="#00000018"/>
+          </g>
+
+          <!-- trees between the rows -->
+          <g>
+            <rect x="238" y="330" width="7" height="24" rx="3.5" fill="#8f6f43"/><circle cx="241" cy="316" r="25" fill="#5e9463"/>
+            <rect x="506" y="336" width="6" height="22" rx="3" fill="#8f6f43"/><circle cx="509" cy="322" r="21" fill="#6fa06f"/>
+            <rect x="824" y="330" width="7" height="24" rx="3.5" fill="#8f6f43"/><circle cx="827" cy="316" r="24" fill="#5e9463"/>
+            <rect x="140" y="348" width="6" height="20" rx="3" fill="#8f6f43"/><circle cx="143" cy="336" r="18" fill="#6fa06f"/>
+            <rect x="962" y="342" width="6" height="22" rx="3" fill="#8f6f43"/><circle cx="965" cy="328" r="20" fill="#5e9463"/>
+          </g>
+
+          <!-- foreground rooftops -->
+          <g>
+            <rect x="-10" y="372" width="214" height="92" rx="7" fill="#edd0a0"/>
+            <rect x="-10" y="372" width="214" height="11" rx="5" fill="#fbead0"/>
+            <rect x="-10" y="458" width="214" height="6" fill="#00000010"/>
+            <rect x="30" y="402" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="84" y="402" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="138" y="402" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="82" y="426" width="30" height="38" rx="5" fill="#5ea6bf"/>
+            <rect x="158" y="352" width="30" height="22" rx="6" fill="#fbead0"/>
+            <rect x="164" y="344" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="232" y="388" width="190" height="76" rx="7" fill="#e2c091"/>
+            <rect x="232" y="388" width="190" height="11" rx="5" fill="#f3dcb6"/>
+            <rect x="232" y="458" width="190" height="6" fill="#00000010"/>
+            <rect x="266" y="418" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="314" y="418" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="362" y="418" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="452" y="374" width="206" height="90" rx="7" fill="#edd0a0"/>
+            <rect x="452" y="374" width="206" height="11" rx="5" fill="#fbead0"/>
+            <rect x="452" y="458" width="206" height="6" fill="#00000010"/>
+            <rect x="490" y="404" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="542" y="404" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="594" y="404" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="540" y="426" width="30" height="38" rx="5" fill="#6cb49e"/>
+            <rect x="690" y="390" width="178" height="74" rx="7" fill="#e2c091"/>
+            <rect x="690" y="390" width="178" height="11" rx="5" fill="#f3dcb6"/>
+            <rect x="690" y="458" width="178" height="6" fill="#00000010"/>
+            <rect x="736" y="420" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="796" y="420" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="822" y="370" width="30" height="22" rx="6" fill="#f3dcb6"/>
+            <rect x="828" y="362" width="18" height="10" rx="5" fill="#e9cda0"/>
+            <rect x="898" y="376" width="170" height="88" rx="7" fill="#edd0a0"/>
+            <rect x="898" y="376" width="170" height="11" rx="5" fill="#fbead0"/>
+            <rect x="898" y="458" width="170" height="6" fill="#00000010"/>
+            <rect x="942" y="406" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="998" y="406" width="26" height="24" rx="5" fill="#00000018"/>
+            <rect x="968" y="426" width="30" height="38" rx="5" fill="#5ea6bf"/>
+          </g>
+
+          <!-- ribbons of connection -->
+          <g fill="none" stroke-linecap="round" stroke-width="7">
+            <path d="M-20 258 C 180 192 320 314 520 246 C 700 186 850 290 1060 222" stroke="#489cd8" opacity=".95"/>
+            <path d="M-20 296 C 200 234 330 350 540 284 C 730 228 870 322 1060 260" stroke="#54c09c" opacity=".9"/>
+            <path d="M-20 334 C 190 282 350 382 560 322 C 750 268 880 358 1060 302" stroke="#e4cc6c" opacity=".95"/>
+          </g>
+        </svg>
+
+        <div class="chip2">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Niamey, Niger</strong><span>Beginning close to home</span></span>
+        </div>
+
+        <div class="panel-dark">
+          <svg class="deco" viewBox="0 0 176 82" aria-hidden="true"><use href="#arctri"/></svg>
+          <p class="eyebrow mint">Launching in Niamey</p>
+          <h2>Starting in Niamey.</h2>
+          <p>
+            Zumfi is preparing to launch its first services in Niamey, Niger. Our goal is to begin
+            locally, learn from the communities we serve, and build a strong foundation for future growth.
+          </p>
+          <p class="tags-dot"><span><i></i> Preparing to launch</span><span><i></i> Starting locally</span></p>
+          <a class="btn btn-white" href="#contact">
+            Stay in touch
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= contact ================= -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's connect.</h2>
+        <p class="lead">Interested in Zumfi, potential collaboration, or learning more about what we're
+        building? We'd be glad to hear from you.</p>
+      </div>
+
+      <div class="contact-card">
+        <a class="reach" href="mailto:sey182833@oru.edu">
+          <span class="ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z"/></svg>
+          </span>
+          <span><strong>Contact Zumfi</strong><span style="font-size:16.5px;color:var(--blue);text-decoration:underline;text-underline-offset:3px;">sey182833@oru.edu</span></span>
+          <span class="go" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+
+      <div class="contact-grid">
+        <div>
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="hp" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="row-2">
+              <div class="field"><label for="name">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" placeholder="Aïcha Moussa"></div>
+              <div class="field"><label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+            </div>
+            <div class="row-2">
+              <div class="field"><label for="phone">Phone <span class="opt">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+227 …"></div>
+              <div class="field"><label for="area">Quartier <span class="opt">(optional)</span></label>
+                <input id="area" name="area" type="text" placeholder="e.g. Yantala"></div>
+            </div>
+            <div class="field"><label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="What would you like to know?"></textarea></div>
+            <div class="form-foot">
+              <button class="btn btn-primary" type="submit" id="submit-btn">Send message</button>
+            </div>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="sent" id="sent-panel">
+            <h3>Message sent — thank you.</h3>
+            <p>We'll reply within two business days. If it's urgent, call <a href="tel:+18162169235">+1 816 216 9235</a>.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="detail">
+            <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><p class="k">Phone</p><a class="v" href="tel:+18162169235">+1 816 216 9235</a></div>
+          </div>
+          <div class="detail">
+            <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><p class="k">Where we are</p><span class="v">Niamey, Niger</span></div>
+          </div>
+          <div class="detail">
+            <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <div><p class="k">Who you'll reach</p><span class="v">Levi Seydou<small>Founder, Zumfi</small></span></div>
+          </div>
+        </div>
+      </div>
+      <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="rule" aria-hidden="true"><i></i><i></i><i></i></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="foot-logo"><img src="assets/zumfi-logo.png" alt="Zumfi"></span>
+    <p class="foot-tag">Reliable Internet. Within Reach.</p>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="#mission">Mission</a>
+      <a href="#building">What We're Building</a>
+      <a href="#why">Why Connectivity Matters</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="foot-base">
+      <p>© 2026 Zumfi. All rights reserved.</p>
+      <p class="where">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Niamey, Niger · <a href="mailto:sey182833@oru.edu">sey182833@oru.edu</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Post the form in place so the visitor keeps their place on the page.
+  // Without JS it submits normally and Netlify shows its own success page.
+  (function () {
+    var form = document.getElementById('contact-form');
+    var panel = document.getElementById('sent-panel');
+    var status = document.getElementById('form-status');
+    var btn = document.getElementById('submit-btn');
+    if (!form || !window.fetch) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = '';
+      status.classList.remove('error');
+      var label = btn.textContent;
+      btn.disabled = true;
+      btn.style.opacity = '.65';
+      btn.textContent = 'Sending…';
+
+      fetch(form.getAttribute('action') || window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        form.classList.add('hide');
+        panel.classList.add('show');
+      }).catch(function () {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.textContent = label;
+        status.classList.add('error');
+        status.innerHTML = 'Sorry — that didn\'t send. Please email ' +
+          '<a href="mailto:sey182833@oru.edu">sey182833@oru.edu</a> or call ' +
+          '<a href="tel:+18162169235">+1 816 216 9235</a>.';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
