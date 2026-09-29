@@ -38,14 +38,36 @@ those screenshots rather than from source.
 
 | Section | Anchor | Source of the copy |
 |---|---|---|
-| Hero | `#top` | Live site: badge, "Reliable Internet. / Within Reach.", lead, both buttons, the "Launching in Niamey, Niger" line and the "Coming soon" chip |
+| Hero | `#top` | Live site: badge, "Reliable Internet. / Within Reach.", both buttons, the "Launching in Niamey, Niger" line and the "Coming soon" chip. Lead and strapline widened to cover both services |
 | Our mission | `#mission` | Live site, verbatim |
+| What we offer | `#offer` | Written here — the two service lines |
 | What we're building | `#building` | Live site, verbatim — all four cards |
 | Why connectivity matters | `#why` | Live site, verbatim — the pull quote and all four rows |
 | Launching in Niamey | `#niamey` | Live site, verbatim — heading, body, both tags, "Stay in touch" |
 | Contact | `#contact` | Live site: eyebrow, "Let's connect.", the lead and the "Contact Zumfi" row |
 
 `#niamey` is not linked from the nav or footer, matching the live site — it's a section you scroll past.
+
+### Two service lines
+
+The site covers both offerings:
+
+- **Home WiFi** — a rooftop receiver, WiFi through the house, one flat monthly fee.
+- **Public Village WiFi** — a public access point at the centre of village life (market, school,
+  clinic), pay-as-you-go, reaching places a home connection can't serve yet.
+
+`#offer` carries them as two colour-coded cards — blue for the household, green for the village,
+each with the arc watermark in its own accent. Four other places were widened to match: the hero
+lead, the "Launching in Niamey" strapline, the `#building` section lead ("more homes **and
+villages**"), and the page description and social card text.
+
+Copy is hedged the way the live site hedges — "being built to", "designed for" — since the service
+isn't live and the licences are still being secured.
+
+> Left alone: the four `#building` cards are still your live-site wording, and two of them
+> ("Reliable Home Internet", "Simple Home WiFi") name only the home product. They read fine as
+> detail about that product now that `#offer` sits above them, but say the word and I'll rewrite
+> one to carry the village hotspot instead.
 
 ### The one addition
 
