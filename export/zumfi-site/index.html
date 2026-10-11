@@ -192,21 +192,12 @@
   .row p { font-size: 16px; max-width: 54ch; }
   .row .go { color: var(--blue); padding-top: 12px; justify-self: end; }
 
-  /* ---------- road to launch ---------- */
-  .road { margin-top: 46px; border-top: 1px solid var(--line); }
-  .road-item { display: grid; grid-template-columns: 58px 1fr; gap: 20px; align-items: start;
-               padding: 24px 0; border-bottom: 1px solid var(--line); }
-  .road-item .n { font-family: var(--fd); font-weight: 800; font-size: 13px; letter-spacing: .1em;
-                  color: #a9bdcb; padding-top: 5px; }
-  .road-item h3 { font-size: 19.5px; margin-bottom: 5px; }
-  .road-item p { font-size: 15.5px; max-width: 62ch; }
-  .road-item.later .n { color: var(--green); }
-  .road-item.later h3::after { content: " · later"; font-weight: 600; color: var(--muted); font-size: 15px; letter-spacing: 0; }
+  /* ---------- licensing band ---------- */
   .pledge { display: flex; gap: 14px; align-items: flex-start; margin-top: 38px;
             background: var(--pale); border-radius: var(--r); padding: 26px 28px; }
   .pledge svg { flex: none; margin-top: 3px; color: var(--blue-deep); }
   .pledge strong { font-family: var(--fd); color: var(--ink); }
-  .team-note { margin-top: 26px; font-size: 15.5px; color: var(--muted); max-width: 62ch; }
+  .pledge p { font-size: 16px; }
 
   /* ---------- launching panel ---------- */
   .panel { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); position: relative; }
@@ -306,7 +297,6 @@
     .brand img { height: 34px; }
     .card { padding: 26px 22px 30px; }
     .offer-card { padding: 30px 24px 34px; }
-    .road-item { grid-template-columns: 1fr; gap: 4px; }
     .pledge { padding: 22px 20px; }
     .cards { grid-template-columns: 1fr; }
     .row { grid-template-columns: 34px 1fr; gap: 6px 12px; padding: 24px 0; }
@@ -464,12 +454,12 @@
           </span>
           <p class="kind">Phase one · starting now</p>
           <h3>Village Hotspots</h3>
-          <p>A satellite dish, a router, and an antenna on a pole bring WiFi to a village centre.
+          <p>A hotspot at the village centre brings WiFi to where people already gather.
           A local vendor sells access, and people nearby connect with their phones.</p>
           <ul>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Works on its own — no tower needed, even where there is no cell signal</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Works even where the cell signal is weak or missing</span></li>
             <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Pay the vendor by the hour, day, week or month</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Sited where people already gather: a market, a bus stop, a school</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Find it where people already gather — a market, a shop, the village centre</span></li>
           </ul>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
@@ -498,46 +488,52 @@
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
         <p class="eyebrow">How it works</p>
-        <h2>One kit. One village online.</h2>
-        <p class="lead">The village kit stands on its own — no tower needed. A dish pulls the signal in,
-        a router runs the hotspot, and an antenna spreads it across the village centre.</p>
+        <h2>WiFi where you already are.</h2>
+        <p class="lead">A Zumfi hotspot sits at the heart of the village. You buy access from a local
+        vendor and connect with the phone already in your pocket.</p>
       </div>
 
       <div class="cards">
         <div class="card">
           <span class="n">01</span>
           <span class="ic" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7 9 3 5 7l4 4"/><path d="m17 11 4 4-4 4-4-4"/><path d="m8 12 4 4 6-6-4-4Z"/><path d="m16 8 3-3"/><path d="M9 21a6 6 0 0 0-6-6"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
           </span>
-          <h3>Internet from space</h3>
-          <p>A satellite dish on the vendor's roof pulls the connection in from above, working even where there is no cell signal at all.</p>
+          <h3>A hotspot in the village</h3>
+          <p>WiFi at the market, the shop, the village centre — the places people already gather.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
           <span class="n">02</span>
           <span class="ic" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6.01 18H6"/><path d="M10.01 18H10"/><path d="M15 10v4"/><path d="M17.84 7.17a4 4 0 0 0-5.66 0"/><path d="M20.66 4.34a8 8 0 0 0-11.31 0"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
           </span>
-          <h3>The brain in the shop</h3>
-          <p>A router runs the hotspot — the logins, the time limits, and the access codes the vendor sells.</p>
+          <h3>Buy access from a local vendor</h3>
+          <p>Someone from the village sells you access by the hour, the day, the week or the month.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
           <span class="n">03</span>
           <span class="ic" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
           </span>
-          <h3>WiFi all around</h3>
-          <p>An antenna high on a pole covers the village centre. People buy a code from the vendor and join the WiFi.</p>
+          <h3>Connect your phone</h3>
+          <p>Enter your code and you're online. Nothing to install, and nothing to set up at home.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
       </div>
 
       <p class="quote" style="margin-top:46px;">
-        A good site is a busy one — a market, a bus stop, a school — with a clear view of the sky,
-        steady power, and a trusted local vendor. An experienced wireless operator works in
-        partnership with Zumfi, guiding network design and equipment.
+        The connection comes in by satellite, so a Zumfi hotspot works even where the cell signal
+        is weak or missing altogether.
       </p>
+
+      <div class="pledge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <p><strong>Licensed and compliant.</strong> Zumfi will operate only under a full ARCEP
+        licence, with all equipment approved and lawfully imported. No paid service begins before
+        the licence is granted.</p>
+      </div>
     </div>
   </section>
 
@@ -599,47 +595,8 @@
     </div>
   </section>
 
-  <!-- ================= road to launch ================= -->
-  <section class="section" id="roadmap">
-    <div class="wrap">
-      <div class="section-head narrow" style="margin-bottom:0;">
-        <p class="eyebrow">The road to launch</p>
-        <h2>Licensed first, then switched on.</h2>
-        <p class="lead">Zumfi is working through the steps in order — registration, licensing, and a
-        first village site — before a single code is sold.</p>
-      </div>
-
-      <div class="road">
-        <div class="road-item"><span class="n">01</span>
-          <div><h3>Groundwork</h3><p>Legal counsel engaged in Niamey, and the first village sites scouted.</p></div></div>
-        <div class="road-item"><span class="n">02</span>
-          <div><h3>Company registered</h3><p>Zumfi registered as a Niger company, with its office in Niamey.</p></div></div>
-        <div class="road-item"><span class="n">03</span>
-          <div><h3>Licence application filed</h3><p>An operator application filed for review by ARCEP, the telecom regulator.</p></div></div>
-        <div class="road-item"><span class="n">04</span>
-          <div><h3>First village kit arrives</h3><p>The kit imported and approved for use in Niger.</p></div></div>
-        <div class="road-item"><span class="n">05</span>
-          <div><h3>First village ready</h3><p>Installed and tested, the vendor trained, ready to switch on.</p></div></div>
-        <div class="road-item"><span class="n">06</span>
-          <div><h3>First village goes live</h3><p>Licence granted, the first hotspot opens, and more villages follow.</p></div></div>
-        <div class="road-item later"><span class="n">07</span>
-          <div><h3>Home internet</h3><p>Once the villages are growing, a tower in Niamey brings households online.</p></div></div>
-      </div>
-
-      <p class="team-note">We start lean — Levi, a field supervisor, and a local vendor in each
-      village. Every new village adds a vendor, and the team grows with it.</p>
-
-      <div class="pledge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <p><strong>Fully licensed from day one.</strong> Zumfi will operate only under a full ARCEP
-        licence, with all equipment approved and lawfully imported. No paid service begins before
-        the licence is granted.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ================= launching in Niamey ================= -->
-  <section class="section section-pale" id="niamey">
+  <section class="section" id="niamey">
     <div class="wrap">
       <div class="panel">
         <div class="panel-media">
@@ -669,7 +626,7 @@
   </section>
 
   <!-- ================= contact ================= -->
-  <section class="section" id="contact">
+  <section class="section section-pale" id="contact">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
         <p class="eyebrow">Contact</p>
@@ -748,7 +705,6 @@
       <a href="#mission">Mission</a>
       <a href="#how">How It Works</a>
       <a href="#why">Why Connectivity Matters</a>
-      <a href="#roadmap">Road to Launch</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="foot-base">

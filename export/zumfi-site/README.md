@@ -47,9 +47,8 @@ those screenshots rather than from source.
 | Hero | `#top` | Village hotspots first, home internet next |
 | Our mission | `#mission` | Why the gap exists — weak signal, bundles that run out |
 | Where we start | `#offer` | The two phases: village hotspots now, home internet later |
-| How it works | `#how` | The village kit — dish, router, antenna — plus siting and the technical partner |
+| How it works | `#how` | Find a hotspot, buy access from a vendor, connect your phone — plus the licensing statement |
 | Why connectivity matters | `#why` | Education, work, communication, opportunity |
-| The road to launch | `#roadmap` | Groundwork through first village live, then homes; the licensing pledge |
 | Launching in Niamey | `#niamey` | Starting locally |
 | Contact | `#contact` | Form and the "Contact Zumfi" row |
 
@@ -67,9 +66,27 @@ with home WiFi.
 - **Phase two — home internet.** A tower in Niamey links homes through rooftop receivers for one
   flat monthly fee, once the village sites are growing.
 
-`#how` walks through the kit, `#roadmap` walks the licensing path from groundwork to first village
-live, and the mission section now opens on the real problem ("the cell signal is weak or gone, and
-where it works, data bundles run out in days").
+`#how` is written for a customer, not a partner: find the hotspot, buy access from a vendor,
+connect your phone. The mission section opens on the real problem ("the cell signal is weak or
+gone, and where it works, data bundles run out in days").
+
+### What is deliberately not on the public page
+
+The Launch Roadmap is marked *for partners and supporters*, and some of what it contains has no
+business on a page anyone can read. Kept off:
+
+- **The launch timeline** — groundwork, company registration, the application filing, kit arrival,
+  first village ready. Milestone tracking is for the people funding and partnering, not visitors.
+- **Team structure** — who reports to whom, the field supervisor, profit splits.
+- **Kit internals** — what the dish, the router and the antenna each do, and that the router holds
+  the logins and time limits. A customer needs to know where to find WiFi and how to buy it.
+- **Site-selection criteria** — clear view of the sky, steady power, a trusted vendor. That is how
+  Zumfi picks a site; it tells a visitor nothing.
+- **The technical partner relationship.**
+
+What stayed is the one piece of that material the public *should* see: the licensing commitment,
+now a band at the end of `#how`. It reassures customers and regulators alike, and it is the thing
+that distinguishes Zumfi from an unlicensed operator.
 
 **No figures anywhere**, by request: no prices, no kit costs, no adoption statistics, no dates, no
 hardware model numbers or frequencies. Phases are described in words — "starting now", "once the
