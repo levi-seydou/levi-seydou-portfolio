@@ -85,13 +85,16 @@ against future coverage. If you'd rather match the live site exactly, delete the
 
 ## Design tokens
 
-Sampled from the live-site screenshots:
+Taken from the logo artwork itself, so the page and the mark are the same palette. Deeper and
+lighter shades (`#2aa26c` for green text, `#a9780a` for the gold eyebrow, `#8ee1bb` for the mint
+eyebrow on navy) are derived from those three by moving lightness only, so the hues stay true:
 
 | Token | Value | Used for |
 |---|---|---|
-| `--blue` | `#489cd8` | primary buttons, links, "Within Reach.", eyebrow labels, the wordmark |
-| `--green` | `#54c09c` | accents, the launch pin, second arc |
-| `--yellow` | `#e4cc6c` | third arc, tag dots, warm accents |
+| `--blue` | `#55b1f0` | the logo's blue — primary buttons, "Within Reach.", eyebrows, icon tints |
+| `--green` | `#5ed59f` | the logo's green — village accents, ticks, the launch pin |
+| `--yellow` | `#fccb55` | the logo's yellow — tag dots, the pull-quote rule, the third arc |
+| `--blue-deep` | `#1282ce` | link text and button hover — darkened from the logo blue to stay readable (4.1:1 on white) |
 | `--ink` | `#18243c` | headings and the footer ground |
 | `--pale` | `#f0f7fc` | section wash |
 
@@ -104,10 +107,14 @@ and the arcs sitting over the `fi` so the mark reads as a signal coming off "…
 the artwork and the white paper is keyed to transparency with a soft alpha ramp, so it sits on any
 light ground; the footer still places it on a white tile against the navy.
 
-Its own colours are a touch different from the site tokens (logo blue `#3c90cc` vs `--blue`
-`#489cd8`, logo yellow `#fcc048` vs `--yellow` `#e4cc6c`). The tokens are kept as sampled from the
-live site, since they drive buttons, links and eyebrows across the page; the divergence only shows
-if you hold the logo directly against a button.
+The site's tokens are taken from this artwork, so the logo and the page are one palette.
+
+> **One contrast note.** White text on the logo blue measures 2.35:1 — below the 4.5:1 WCAG wants
+> for text this size. The previous, deeper blue was 2.99:1, so matching the logo costs a little
+> legibility on the two CTAs. Two ways to fix it if you want: set the primary button's text to
+> `--ink` navy (6.6:1, and the button still reads as the logo blue), or deepen just the button
+> background to `--blue-deep`. Links and the gold eyebrow already use darkened shades for this
+> reason.
 
 **Fonts are still a guess.** The live site's faces weren't identifiable from screenshots, so this uses
 **Figtree** (display — tight, geometric, close to the headings) over **Karla** (body). If you know
