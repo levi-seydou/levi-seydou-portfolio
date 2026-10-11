@@ -104,6 +104,11 @@ recoloured to the site blue — hue rotated 192° → 205° with lightness mappe
 stay clean, applied only below the arcs so the three-colour mark is untouched. Its solid pixels now
 read `#4b9ed6`, matching the buttons beside it.
 
+The arcs sit over the `fi` rather than over the middle of the word, so the mark reads as a signal
+coming off "…fi". They were lifted out by connected-component labelling (the three arc strokes,
+plus their antialiased halo but never a letter's pixels) and shifted +135px, which centres them on
+the `fi` ligature; the canvas widened from 371 to 443px to hold the overhang.
+
 Every colour in the lockup is also floored for lightness, so nothing in it reads dark: the arcs
 sit at or above HSL L 0.62 and the wordmark at or above L 0.54, with saturation eased slightly on
 lifted pixels so they don't go neon. The darkest pixel in the file is L 0.54; there were dark
