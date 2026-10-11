@@ -11,23 +11,29 @@ assets/zumfi-logo.png         primary lockup — wordmark recoloured to the site
 assets/zumfi-icon.png         app icon, 512×512, rounded corners baked into the alpha
 assets/zumfi-icon-180.png     apple-touch-icon
 assets/favicon.png            32×32 favicon
-assets/hero-village.jpg       hero artwork — supplied, cropped to the art
+assets/hero-village.jpg       hero artwork — supplied
 assets/mission-arches.jpg     mission artwork — supplied, cropped to the art
+assets/niamey-aerial.jpg      launch-panel artwork — supplied
 ```
 
 ## Illustrations
 
-The hero and mission illustrations are the real artwork, supplied as images: cropped to the
-artwork's bounding box (the paper ground around it trimmed), scaled to 1000px wide and saved as
-progressive JPEG at ~100 KB each. `.art` sets the frame — rounded corners, a soft shadow and a
-`#f4f1ec` ground so the crop blends into its own paper.
+All three illustrations are the real artwork, supplied as images — there are no drawn stand-ins
+left in the page.
 
-> The sources were phone-sized (474px wide), so they were upscaled to 1000px and are slightly
-> soft at full width. Drop the original exports over `assets/hero-village.jpg` and
-> `assets/mission-arches.jpg` — same filenames, no markup change — and they sharpen up.
+| File | Where | Treatment |
+|---|---|---|
+| `hero-village.jpg` | hero | Isometric village with receivers on the rooftops. Full-bleed source, scaled to 1240px |
+| `mission-arches.jpg` | `#mission` | Paper-cut arches — a desk, a family at a table, a shop. Paper margin trimmed, scaled to 1000px |
+| `niamey-aerial.jpg` | `#niamey` | Paper-cut aerial of Niamey along the river with ribbons of connection. Scaled to 1240px |
 
-The launch panel's aerial of Niamey is still an inline SVG standing in for the painted original,
-which wasn't supplied.
+All saved as progressive JPEG. `.art` frames the two column images (rounded corners, soft shadow);
+the launch panel's banner sits in `.panel-media` at a fixed 16:9 with `object-fit: cover`, so the
+dark block below it keeps its position whatever the source aspect, and the location chip anchors to
+the bottom-left of the image rather than a fixed offset.
+
+> `mission-arches.jpg` comes from a 439px-wide source and is upscaled, so it is a little soft at
+> full width. Dropping a larger export over the same filename needs no markup change.
 
 ## Built to match the live site
 
