@@ -99,11 +99,6 @@ Recurring devices from the live site: gradient-dash eyebrows (blue → green →
 with a corner arrow, the tri-colour rule between sections, and the logo's three arcs used as a
 watermark in the corner of each numbered card.
 
-The `zumfi` wordmark in `assets/zumfi-logo.png` was supplied in teal (`#2888a0`) and has been
-recoloured to the site blue — hue rotated 192° → 205° with lightness mapped so antialiased edges
-stay clean, applied only below the arcs so the three-colour mark is untouched. Its solid pixels now
-read `#4b9ed6`, matching the buttons beside it.
-
 The `zumfi` lockup in `assets/zumfi-logo.png` is the supplied logo — blue wordmark, green `fi`,
 and the arcs sitting over the `fi` so the mark reads as a signal coming off "…fi". It is cropped to
 the artwork and the white paper is keyed to transparency with a soft alpha ramp, so it sits on any
