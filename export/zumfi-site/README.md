@@ -7,7 +7,7 @@ stylesheet.
 
 ```
 index.html                    the whole site
-assets/zumfi-logo.png         primary lockup — wordmark recoloured to the site blue
+assets/zumfi-logo.png         primary lockup — supplied, cropped and keyed to transparency
 assets/zumfi-icon.png         app icon, 512×512, rounded corners baked into the alpha
 assets/zumfi-icon-180.png     apple-touch-icon
 assets/favicon.png            32×32 favicon
@@ -104,15 +104,15 @@ recoloured to the site blue — hue rotated 192° → 205° with lightness mappe
 stay clean, applied only below the arcs so the three-colour mark is untouched. Its solid pixels now
 read `#4b9ed6`, matching the buttons beside it.
 
-The arcs sit over the `fi` rather than over the middle of the word, so the mark reads as a signal
-coming off "…fi". They were lifted out by connected-component labelling (the three arc strokes,
-plus their antialiased halo but never a letter's pixels) and shifted +135px, which centres them on
-the `fi` ligature; the canvas widened from 371 to 443px to hold the overhang.
+The `zumfi` lockup in `assets/zumfi-logo.png` is the supplied logo — blue wordmark, green `fi`,
+and the arcs sitting over the `fi` so the mark reads as a signal coming off "…fi". It is cropped to
+the artwork and the white paper is keyed to transparency with a soft alpha ramp, so it sits on any
+light ground; the footer still places it on a white tile against the navy.
 
-Every colour in the lockup is also floored for lightness, so nothing in it reads dark: the arcs
-sit at or above HSL L 0.62 and the wordmark at or above L 0.54, with saturation eased slightly on
-lifted pixels so they don't go neon. The darkest pixel in the file is L 0.54; there were dark
-navy-teal segments in the arc gradients (`#2080b0`) before.
+Its own colours are a touch different from the site tokens (logo blue `#3c90cc` vs `--blue`
+`#489cd8`, logo yellow `#fcc048` vs `--yellow` `#e4cc6c`). The tokens are kept as sampled from the
+live site, since they drive buttons, links and eyebrows across the page; the divergence only shows
+if you hold the logo directly against a button.
 
 **Fonts are still a guess.** The live site's faces weren't identifiable from screenshots, so this uses
 **Figtree** (display — tight, geometric, close to the headings) over **Karla** (body). If you know
