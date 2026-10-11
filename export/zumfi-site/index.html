@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zumfi — Reliable Internet. Within Reach.</title>
-<meta name="description" content="Zumfi is working to make fast, reliable and affordable internet more accessible to families and communities in Niger — WiFi in the home, and public hotspots for villages. Preparing to launch in Niamey.">
+<meta name="description" content="Zumfi is a new internet service in Niger. We start with village hotspots that bring WiFi where the cell signal is weak or missing, and grow into home internet next. Preparing to launch in Niamey.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/zumfi-icon-180.png">
 <meta property="og:title" content="Zumfi — Reliable Internet. Within Reach.">
-<meta property="og:description" content="Home WiFi for families and public WiFi for villages, thoughtfully built for everyday life. Preparing to launch in Niamey, Niger.">
+<meta property="og:description" content="Village hotspots first, home internet next. Preparing to launch in Niamey, Niger.">
 <meta property="og:image" content="assets/zumfi-icon.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +137,7 @@
   .offer-card li svg { flex: none; margin-top: 5px; }
   .offer-card .arcs { position: absolute; right: -30px; bottom: 0; width: 158px; opacity: .4; }
   .offer-home .ic { background: rgba(85,177,240,.13); color: var(--blue); }
+  .offer-card:first-child .arcs { color: #5ed59f; }
   .offer-home .kind, .offer-home li svg, .offer-home .arcs { color: var(--blue); }
   .offer-village .ic { background: rgba(94,213,159,.15); color: #2aa26c; }
   .offer-village .kind, .offer-village li svg, .offer-village .arcs { color: #2aa26c; }
@@ -159,7 +160,7 @@
   .mission-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 
   /* numbered cards */
-  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .card { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--line);
           border-radius: var(--r); padding: 30px 26px 34px; box-shadow: var(--shadow-sm); }
   .card .n { position: absolute; top: 28px; right: 30px; font-family: var(--fd); font-weight: 800; font-size: 15px; color: #c3d5e2; }
@@ -190,6 +191,22 @@
   .row h3 { font-size: 20px; margin-bottom: 6px; }
   .row p { font-size: 16px; max-width: 54ch; }
   .row .go { color: var(--blue); padding-top: 12px; justify-self: end; }
+
+  /* ---------- road to launch ---------- */
+  .road { margin-top: 46px; border-top: 1px solid var(--line); }
+  .road-item { display: grid; grid-template-columns: 58px 1fr; gap: 20px; align-items: start;
+               padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .road-item .n { font-family: var(--fd); font-weight: 800; font-size: 13px; letter-spacing: .1em;
+                  color: #a9bdcb; padding-top: 5px; }
+  .road-item h3 { font-size: 19.5px; margin-bottom: 5px; }
+  .road-item p { font-size: 15.5px; max-width: 62ch; }
+  .road-item.later .n { color: var(--green); }
+  .road-item.later h3::after { content: " · later"; font-weight: 600; color: var(--muted); font-size: 15px; letter-spacing: 0; }
+  .pledge { display: flex; gap: 14px; align-items: flex-start; margin-top: 38px;
+            background: var(--pale); border-radius: var(--r); padding: 26px 28px; }
+  .pledge svg { flex: none; margin-top: 3px; color: var(--blue-deep); }
+  .pledge strong { font-family: var(--fd); color: var(--ink); }
+  .team-note { margin-top: 26px; font-size: 15.5px; color: var(--muted); max-width: 62ch; }
 
   /* ---------- launching panel ---------- */
   .panel { border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); position: relative; }
@@ -289,6 +306,8 @@
     .brand img { height: 34px; }
     .card { padding: 26px 22px 30px; }
     .offer-card { padding: 30px 24px 34px; }
+    .road-item { grid-template-columns: 1fr; gap: 4px; }
+    .pledge { padding: 22px 20px; }
     .cards { grid-template-columns: 1fr; }
     .row { grid-template-columns: 34px 1fr; gap: 6px 12px; padding: 24px 0; }
     .row .ic, .row .go { display: none; }
@@ -333,7 +352,7 @@
     <nav class="nav" aria-label="Main">
       <a href="#offer">What we offer</a>
       <a href="#mission">Our mission</a>
-      <a href="#building">What we're building</a>
+      <a href="#how">How it works</a>
       <a href="#why">Why it matters</a>
       <a class="btn btn-primary btn-sm" href="#contact">Contact Us</a>
     </nav>
@@ -357,8 +376,8 @@
             <p class="badge"><span class="dot"></span> Preparing to launch in Niamey</p>
             <h1>Reliable Internet. <span class="b2">Within Reach.</span></h1>
             <p class="lead">
-              Zumfi is working to make fast, reliable and affordable internet more accessible to
-              families and communities in Niger — WiFi in the home, and public hotspots for villages.
+              Zumfi is a new internet service in Niger. We start with village hotspots that bring
+              WiFi to places where the cell signal is weak or missing, and grow into home internet next.
             </p>
             <div class="hero-cta">
               <a class="btn btn-primary" href="#mission">
@@ -375,7 +394,7 @@
                 <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </span>
               <span><strong>Launching in Niamey, Niger</strong>
-              <span>Home and village WiFi, thoughtfully built for everyday life.</span></span>
+              <span>Village hotspots first, home internet next.</span></span>
             </div>
           </div>
 
@@ -404,19 +423,20 @@
           <p class="eyebrow">Our mission</p>
           <h2>Internet should open doors, not create barriers.</h2>
           <p class="big" style="margin-top:26px;">
-            For many families and communities in Niger, dependable home internet can still be slow,
-            unreliable, or too expensive. Zumfi is being built to help change that.
+            In many villages the cell signal is weak or gone, and where it works, data bundles run
+            out in days. School, work, and staying in touch with relatives all depend on a connection
+            most people cannot keep.
           </p>
           <p class="big">
-            Our mission is to make reliable home connectivity more accessible and affordable, giving
-            more people the opportunity to learn, work, communicate, build businesses, and stay connected.
+            Our mission is to make reliable connectivity more accessible and affordable, giving more
+            people the opportunity to learn, work, communicate, build businesses, and stay connected.
           </p>
           <p class="focus">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-            <span><strong>Focused on everyday households.</strong> Beginning with the needs of
-            communities that have limited dependable connectivity options.</span>
+            <span><strong>Starting where the signal isn't.</strong> Beginning with village centres
+            that have little or no dependable service, then growing into homes.</span>
           </p>
-          <p class="tags">At home <i></i> For learning <i></i> For local work</p>
+          <p class="tags">In the village <i></i> For learning <i></i> For local work</p>
         </div>
 
         <div>
@@ -431,41 +451,41 @@
   <section class="section section-pale" id="offer">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
-        <p class="eyebrow">What we offer</p>
-        <h2>Two ways to get connected.</h2>
-        <p class="lead">Zumfi is being built to serve both the household and the village — a connection
-        inside the home, and a public hotspot where a whole community can come online.</p>
+        <p class="eyebrow">Where we start</p>
+        <h2>Village hotspots first. Home internet next.</h2>
+        <p class="lead">Zumfi begins where the need is sharpest — village centres where the cell signal
+        is weak or missing — and grows into homes once those sites are running.</p>
       </div>
 
       <div class="offer">
-        <div class="offer-card offer-home">
-          <span class="ic" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
-          </span>
-          <p class="kind">For the household</p>
-          <h3>Home WiFi</h3>
-          <p>A small receiver on the roof brings the connection indoors, giving the whole home WiFi
-          for one flat monthly fee.</p>
-          <ul>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>One connection for the household, on every device</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>A flat monthly fee instead of capped mobile data</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Installed and supported by a local team</span></li>
-          </ul>
-          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
-        </div>
-
         <div class="offer-card offer-village">
           <span class="ic" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
           </span>
-          <p class="kind">For the village</p>
-          <h3>Public Village WiFi</h3>
-          <p>A public access point at the centre of village life — the market, the school, the clinic —
-          so people can get online without a subscription at home.</p>
+          <p class="kind">Phase one · starting now</p>
+          <h3>Village Hotspots</h3>
+          <p>A satellite dish, a router, and an antenna on a pole bring WiFi to a village centre.
+          A local vendor sells access, and people nearby connect with their phones.</p>
           <ul>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Shared access where the community already gathers</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Designed for pay-as-you-go use, with no monthly commitment</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Reaches villages a home connection cannot serve yet</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Works on its own — no tower needed, even where there is no cell signal</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Pay the vendor by the hour, day, week or month</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Sited where people already gather: a market, a bus stop, a school</span></li>
+          </ul>
+          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
+        </div>
+
+        <div class="offer-card offer-home">
+          <span class="ic" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          </span>
+          <p class="kind">Phase two · once the villages are growing</p>
+          <h3>Home Internet</h3>
+          <p>A tower in Niamey will link homes through rooftop receivers, giving the whole household
+          WiFi for one flat monthly fee.</p>
+          <ul>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>One connection for the household, on every device</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>A flat monthly fee instead of capped mobile data</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Installed and supported by a local team</span></li>
           </ul>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
@@ -474,31 +494,32 @@
   </section>
 
   <!-- ================= what we're building ================= -->
-  <section class="section" id="building">
+  <section class="section" id="how">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
-        <p class="eyebrow">What we're building</p>
-        <h2>Built for everyday connectivity.</h2>
-        <p class="lead">A practical, local approach to helping more homes and villages get online with confidence.</p>
+        <p class="eyebrow">How it works</p>
+        <h2>One kit. One village online.</h2>
+        <p class="lead">The village kit stands on its own — no tower needed. A dish pulls the signal in,
+        a router runs the hotspot, and an antenna spreads it across the village centre.</p>
       </div>
 
       <div class="cards">
         <div class="card">
           <span class="n">01</span>
           <span class="ic" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="9"/><line x1="18" y1="20" x2="18" y2="4"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7 9 3 5 7l4 4"/><path d="m17 11 4 4-4 4-4-4"/><path d="m8 12 4 4 6-6-4-4Z"/><path d="m16 8 3-3"/><path d="M9 21a6 6 0 0 0-6-6"/></svg>
           </span>
-          <h3>Reliable Home Internet</h3>
-          <p>Designed to provide households with dependable connectivity for everyday online needs.</p>
+          <h3>Internet from space</h3>
+          <p>A satellite dish on the vendor's roof pulls the connection in from above, working even where there is no cell signal at all.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
           <span class="n">02</span>
           <span class="ic" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6.01 18H6"/><path d="M10.01 18H10"/><path d="M15 10v4"/><path d="M17.84 7.17a4 4 0 0 0-5.66 0"/><path d="M20.66 4.34a8 8 0 0 0-11.31 0"/></svg>
           </span>
-          <h3>Affordable Access</h3>
-          <p>Working toward service that is financially accessible to more families and communities.</p>
+          <h3>The brain in the shop</h3>
+          <p>A router runs the hotspot — the logins, the time limits, and the access codes the vendor sells.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
@@ -506,20 +527,17 @@
           <span class="ic" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
           </span>
-          <h3>Simple Home WiFi</h3>
-          <p>Connectivity designed around the way families actually use the internet at home.</p>
-          <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
-        </div>
-        <div class="card">
-          <span class="n">04</span>
-          <span class="ic" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <h3>Built for Niger</h3>
-          <p>Beginning in Niamey with a long-term vision of helping expand connectivity to more communities.</p>
+          <h3>WiFi all around</h3>
+          <p>An antenna high on a pole covers the village centre. People buy a code from the vendor and join the WiFi.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
       </div>
+
+      <p class="quote" style="margin-top:46px;">
+        A good site is a busy one — a market, a bus stop, a school — with a clear view of the sky,
+        steady power, and a trusted local vendor. An experienced wireless operator works in
+        partnership with Zumfi, guiding network design and equipment.
+      </p>
     </div>
   </section>
 
@@ -529,8 +547,7 @@
       <p class="eyebrow gold">Why connectivity matters</p>
       <h2>More than just WiFi.</h2>
       <p class="quote" style="margin-top:28px;">
-        Dependable home internet can help unlock useful everyday possibilities.
-        That is the future Zumfi is preparing for.
+        A student shouldn't have to choose between homework and a week of mobile data.
       </p>
 
       <div class="rows">
@@ -582,8 +599,47 @@
     </div>
   </section>
 
+  <!-- ================= road to launch ================= -->
+  <section class="section" id="roadmap">
+    <div class="wrap">
+      <div class="section-head narrow" style="margin-bottom:0;">
+        <p class="eyebrow">The road to launch</p>
+        <h2>Licensed first, then switched on.</h2>
+        <p class="lead">Zumfi is working through the steps in order — registration, licensing, and a
+        first village site — before a single code is sold.</p>
+      </div>
+
+      <div class="road">
+        <div class="road-item"><span class="n">01</span>
+          <div><h3>Groundwork</h3><p>Legal counsel engaged in Niamey, and the first village sites scouted.</p></div></div>
+        <div class="road-item"><span class="n">02</span>
+          <div><h3>Company registered</h3><p>Zumfi registered as a Niger company, with its office in Niamey.</p></div></div>
+        <div class="road-item"><span class="n">03</span>
+          <div><h3>Licence application filed</h3><p>An operator application filed for review by ARCEP, the telecom regulator.</p></div></div>
+        <div class="road-item"><span class="n">04</span>
+          <div><h3>First village kit arrives</h3><p>The kit imported and approved for use in Niger.</p></div></div>
+        <div class="road-item"><span class="n">05</span>
+          <div><h3>First village ready</h3><p>Installed and tested, the vendor trained, ready to switch on.</p></div></div>
+        <div class="road-item"><span class="n">06</span>
+          <div><h3>First village goes live</h3><p>Licence granted, the first hotspot opens, and more villages follow.</p></div></div>
+        <div class="road-item later"><span class="n">07</span>
+          <div><h3>Home internet</h3><p>Once the villages are growing, a tower in Niamey brings households online.</p></div></div>
+      </div>
+
+      <p class="team-note">We start lean — Levi, a field supervisor, and a local vendor in each
+      village. Every new village adds a vendor, and the team grows with it.</p>
+
+      <div class="pledge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <p><strong>Fully licensed from day one.</strong> Zumfi will operate only under a full ARCEP
+        licence, with all equipment approved and lawfully imported. No paid service begins before
+        the licence is granted.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= launching in Niamey ================= -->
-  <section class="section" id="niamey">
+  <section class="section section-pale" id="niamey">
     <div class="wrap">
       <div class="panel">
         <div class="panel-media">
@@ -613,7 +669,7 @@
   </section>
 
   <!-- ================= contact ================= -->
-  <section class="section section-pale" id="contact">
+  <section class="section" id="contact">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
         <p class="eyebrow">Contact</p>
@@ -690,8 +746,9 @@
     <nav class="foot-nav" aria-label="Footer">
       <a href="#offer">What We Offer</a>
       <a href="#mission">Mission</a>
-      <a href="#building">What We're Building</a>
+      <a href="#how">How It Works</a>
       <a href="#why">Why Connectivity Matters</a>
+      <a href="#roadmap">Road to Launch</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="foot-base">

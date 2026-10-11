@@ -42,19 +42,42 @@ type hierarchy, section rhythm and copy. The live site itself could not be reach
 environment this was built in (outbound network is blocked), so everything here was matched from
 those screenshots rather than from source.
 
-| Section | Anchor | Source of the copy |
+| Section | Anchor | Content |
 |---|---|---|
-| Hero | `#top` | Live site: badge, "Reliable Internet. / Within Reach.", both buttons, the "Launching in Niamey, Niger" line and the "Coming soon" chip. Lead and strapline widened to cover both services |
-| Our mission | `#mission` | Live site, verbatim |
-| What we offer | `#offer` | Written here — the two service lines |
-| What we're building | `#building` | Live site, verbatim — all four cards |
-| Why connectivity matters | `#why` | Live site, verbatim — the pull quote and all four rows |
-| Launching in Niamey | `#niamey` | Live site, verbatim — heading, body, both tags, "Stay in touch" |
-| Contact | `#contact` | Live site: eyebrow, "Let's connect.", the lead and the "Contact Zumfi" row |
+| Hero | `#top` | Village hotspots first, home internet next |
+| Our mission | `#mission` | Why the gap exists — weak signal, bundles that run out |
+| Where we start | `#offer` | The two phases: village hotspots now, home internet later |
+| How it works | `#how` | The village kit — dish, router, antenna — plus siting and the technical partner |
+| Why connectivity matters | `#why` | Education, work, communication, opportunity |
+| The road to launch | `#roadmap` | Groundwork through first village live, then homes; the licensing pledge |
+| Launching in Niamey | `#niamey` | Starting locally |
+| Contact | `#contact` | Form and the "Contact Zumfi" row |
 
 `#niamey` is not linked from the nav or footer, matching the live site — it's a section you scroll past.
 
-### Two service lines
+### Built from the Launch Roadmap and the Village Hotspot Kit
+
+The page follows those two documents, which changed the story in one important way: **village
+hotspots come first and home internet follows**, not the other way round. The site used to lead
+with home WiFi.
+
+- **Phase one — village hotspots.** A satellite dish, a router and an antenna on a pole bring WiFi
+  to a village centre. A local vendor sells access; people pay by the hour, day, week or month. No
+  tower needed, and it works where the cell signal doesn't.
+- **Phase two — home internet.** A tower in Niamey links homes through rooftop receivers for one
+  flat monthly fee, once the village sites are growing.
+
+`#how` walks through the kit, `#roadmap` walks the licensing path from groundwork to first village
+live, and the mission section now opens on the real problem ("the cell signal is weak or gone, and
+where it works, data bundles run out in days").
+
+**No figures anywhere**, by request: no prices, no kit costs, no adoption statistics, no dates, no
+hardware model numbers or frequencies. Phases are described in words — "starting now", "once the
+villages are growing", "later". Equipment is generic — "a satellite dish", "a router", "an antenna
+on a pole" — rather than naming the brands in the kit document, which suits a public page and
+leaves the partner documents to carry the specifics.
+
+### The old two service lines
 
 The site covers both offerings:
 
