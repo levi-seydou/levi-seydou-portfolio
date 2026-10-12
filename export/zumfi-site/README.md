@@ -2,7 +2,7 @@
 
 A single-page site for **Zumfi**, the fixed wireless home internet service being established in
 Niamey, Niger. No build step, no framework, no dependencies: `index.html` is self-contained
-(inline CSS, inline SVG, ~30 lines of JS) and the only external request is the Google Fonts
+(inline CSS, inline SVG, ~100 lines of JS) and the only external request is the Google Fonts
 stylesheet.
 
 ```
@@ -94,27 +94,6 @@ villages are growing", "later". Equipment is generic — "a satellite dish", "a 
 on a pole" — rather than naming the brands in the kit document, which suits a public page and
 leaves the partner documents to carry the specifics.
 
-### The old two service lines
-
-The site covers both offerings:
-
-- **Home WiFi** — a rooftop receiver, WiFi through the house, one flat monthly fee.
-- **Public Village WiFi** — a public access point at the centre of village life (market, school,
-  clinic), pay-as-you-go, reaching places a home connection can't serve yet.
-
-`#offer` carries them as two colour-coded cards — blue for the household, green for the village,
-each with the arc watermark in its own accent. Four other places were widened to match: the hero
-lead, the "Launching in Niamey" strapline, the `#building` section lead ("more homes **and
-villages**"), and the page description and social card text.
-
-Copy is hedged the way the live site hedges — "being built to", "designed for" — since the service
-isn't live and the licences are still being secured.
-
-> Left alone: the four `#building` cards are still your live-site wording, and two of them
-> ("Reliable Home Internet", "Simple Home WiFi") name only the home product. They read fine as
-> detail about that product now that `#offer` sits above them, but say the word and I'll rewrite
-> one to carry the village hotspot instead.
-
 ### The one addition
 
 The live contact section is an email link only. This page keeps that row exactly as it appears
@@ -167,14 +146,37 @@ Soft SVG clouds — one shape (`<g id="cloud">`) reused at several scales and op
 behind the hero, the neighbourhood illustration and the arches. They're kept clear of body copy so
 nothing loses contrast. The hero sky is a pale blue gradient that resolves to white at the rule.
 
-## Illustrations
+## English and French
 
-Both are inline SVG, no image files:
+Niger's official language is French, so the page ships in both and carries an **EN | FR** switch in
+the header, left of the Contact button. It is a `<button>` pair rather than links, so it stays
+visible on phones where the nav anchors collapse.
 
-- **Hero** — a neighbourhood of flat-roofed homes under a Sahel sky, with blue/green/yellow arcs of
-  connection linking the rooftops. Stands in for the live site's 3D village render.
-- **Mission** — three arches (a desk, a family at a table, a small shop) echoing the live site's
-  paper-cut illustration of everyday life.
+Every translatable node carries its French alongside the English already in the markup:
+
+| Attribute | Swaps |
+|---|---|
+| `data-fr` | the element's inner markup (87 of them — headings, copy, labels, buttons, list items) |
+| `data-fr-ph` | input and textarea `placeholder` |
+| `data-fr-alt` | illustration `alt` text |
+| `data-fr-aria` | `aria-label` on the brand link and the two navs |
+
+English is never written into the attributes: the script reads it out of the document on load and
+keeps it, so the page is correct English with JavaScript off and nothing can drift between the two
+copies. Switching also sets `<html lang>`, the `<title>` and the meta description, and the form's
+own status messages follow the current language.
+
+The choice is remembered in `localStorage` (`zumfi-lang`, wrapped in `try/catch` so private mode
+can't break the page). A first-time visitor on a French browser lands in French; everyone else
+lands in English.
+
+**Adding or changing copy:** edit the English in the markup and the French in the matching
+`data-fr` on the same element — nothing else to touch. An element with `data-fr` must not contain
+another translated element, since its inner markup is replaced wholesale.
+
+A few French labels are deliberately shorter than their English counterparts (*Offres*,
+*Fonctionnement*, *Pourquoi Zumfi*, *Contact*) so the header stays on one line — French runs about
+20% longer than English and the full phrases wrapped it to two.
 
 ## The form
 

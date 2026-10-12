@@ -87,8 +87,19 @@
   .site-header .wrap { display: flex; align-items: center; gap: 18px; height: 78px; }
   .brand img { height: 40px; width: auto; display: block; }
   .nav { display: flex; align-items: center; gap: 28px; margin-left: auto; }
-  .nav a { font-family: var(--fd); font-weight: 600; font-size: 15.5px; color: var(--ink); text-decoration: none; }
+  .nav a { font-family: var(--fd); font-weight: 600; font-size: 15.5px; color: var(--ink); text-decoration: none; white-space: nowrap; }
   .nav a:hover { color: var(--blue); }
+
+  /* ---------- language toggle ---------- */
+  .lang { display: flex; align-items: center; gap: 2px; flex: none; background: var(--pale);
+          border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .lang button { font-family: var(--fd); font-weight: 700; font-size: 13px; letter-spacing: .06em;
+                 color: var(--body); background: none; border: 0; border-radius: 999px;
+                 padding: 7px 12px; line-height: 1; cursor: pointer;
+                 transition: background-color .18s, color .18s; }
+  .lang button:hover { color: var(--ink); }
+  .lang button[aria-pressed="true"] { background: var(--ink); color: #fff; cursor: default; }
+  .lang button:focus-visible { outline: 3px solid rgba(85,177,240,.5); outline-offset: 2px; }
 
   /* ---------- sky + clouds ---------- */
   .sky { position: relative; overflow: hidden;
@@ -275,6 +286,10 @@
   .foot-base a { color: #dbe6f0; text-decoration: none; font-weight: 600; }
 
   /* ---------- responsive ---------- */
+  @media (max-width: 1080px) {
+    .nav { gap: 17px; }
+    .site-header .wrap { gap: 14px; }
+  }
   @media (max-width: 940px) {
     .hero-grid, .mission-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
     .cards { grid-template-columns: 1fr; }
@@ -294,6 +309,7 @@
     :root { --gutter: 18px; --r: 22px; }
     body { font-size: 16.5px; }
     .site-header .wrap { height: 68px; }
+    .lang button { padding: 7px 10px; font-size: 12.5px; }
     .brand img { height: 34px; }
     .card { padding: 26px 22px 30px; }
     .offer-card { padding: 30px 24px 34px; }
@@ -316,7 +332,7 @@
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-fr="Aller au contenu">Skip to content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <g id="cloud">
@@ -338,13 +354,17 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Zumfi — home"><img src="assets/zumfi-logo.png" alt="Zumfi"></a>
-    <nav class="nav" aria-label="Main">
-      <a href="#offer">What we offer</a>
-      <a href="#mission">Our mission</a>
-      <a href="#how">How it works</a>
-      <a href="#why">Why it matters</a>
-      <a class="btn btn-primary btn-sm" href="#contact">Contact Us</a>
+    <a class="brand" href="#top" aria-label="Zumfi — home" data-fr-aria="Zumfi — accueil"><img src="assets/zumfi-logo.png" alt="Zumfi"></a>
+    <nav class="nav" aria-label="Main" data-fr-aria="Navigation principale">
+      <a href="#offer" data-fr="Offres">What we offer</a>
+      <a href="#mission" data-fr="Notre mission">Our mission</a>
+      <a href="#how" data-fr="Fonctionnement">How it works</a>
+      <a href="#why" data-fr="Pourquoi Zumfi">Why it matters</a>
+      <div class="lang" role="group" aria-label="Language" data-fr-aria="Langue">
+        <button type="button" lang="en" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" lang="fr" data-set-lang="fr" aria-pressed="false">FR</button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#contact" data-fr="Contact">Contact Us</a>
     </nav>
   </div>
 </header>
@@ -363,19 +383,19 @@
       <div class="wrap">
         <div class="hero-grid">
           <div>
-            <p class="badge"><span class="dot"></span> Preparing to launch in Niamey</p>
-            <h1>Reliable Internet. <span class="b2">Within Reach.</span></h1>
-            <p class="lead">
+            <p class="badge"><span class="dot"></span><span data-fr="Lancement en préparation à Niamey">Preparing to launch in Niamey</span></p>
+            <h1><span data-fr="Un internet fiable.">Reliable Internet.</span> <span class="b2" data-fr="À votre portée.">Within Reach.</span></h1>
+            <p class="lead" data-fr="Zumfi est un nouveau service internet au Niger. Nous commençons par des points WiFi au village, là où le réseau mobile est faible ou absent, puis nous étendrons l'internet à domicile.">
               Zumfi is a new internet service in Niger. We start with village hotspots that bring
               WiFi to places where the cell signal is weak or missing, and grow into home internet next.
             </p>
             <div class="hero-cta">
               <a class="btn btn-primary" href="#mission">
-                Learn About Zumfi
+                <span data-fr="Découvrir Zumfi">Learn About Zumfi</span>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
               </a>
               <a class="btn btn-ghost" href="#contact">
-                Contact Us
+                <span data-fr="Nous contacter">Contact Us</span>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
               </a>
             </div>
@@ -383,20 +403,21 @@
               <span class="pin" aria-hidden="true">
                 <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </span>
-              <span><strong>Launching in Niamey, Niger</strong>
-              <span>Village hotspots first, home internet next.</span></span>
+              <span><strong data-fr="Lancement à Niamey, au Niger">Launching in Niamey, Niger</strong>
+              <span data-fr="Les points WiFi au village d'abord, l'internet à domicile ensuite.">Village hotspots first, home internet next.</span></span>
             </div>
           </div>
 
           <div class="art-wrap">
             <img class="art" src="assets/hero-village.jpg" width="1240" height="706"
-                 alt="A village of flat-roofed homes around a central square, with glowing arcs of connection linking receivers on the rooftops">
+                 alt="A village of flat-roofed homes around a central square, with glowing arcs of connection linking receivers on the rooftops"
+                 data-fr-alt="Un village de maisons à toit plat autour d'une place centrale, relié par des arcs lumineux entre des récepteurs installés sur les toits">
 
             <div class="chip">
               <span class="ic" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
               </span>
-              <span><span class="k">Coming soon</span><span class="v">Niamey, Niger</span></span>
+              <span><span class="k" data-fr="Bientôt">Coming soon</span><span class="v">Niamey, Niger</span></span>
             </div>
           </div>
         </div>
@@ -410,28 +431,29 @@
     <div class="wrap">
       <div class="mission-grid">
         <div class="mission-copy">
-          <p class="eyebrow">Our mission</p>
-          <h2>Internet should open doors, not create barriers.</h2>
-          <p class="big" style="margin-top:26px;">
+          <p class="eyebrow" data-fr="Notre mission">Our mission</p>
+          <h2 data-fr="L'internet doit ouvrir des portes, pas en fermer.">Internet should open doors, not create barriers.</h2>
+          <p class="big" style="margin-top:26px;" data-fr="Dans beaucoup de villages, le réseau mobile est faible ou inexistant, et là où il fonctionne, les forfaits de données s'épuisent en quelques jours. L'école, le travail et les nouvelles de la famille dépendent tous d'une connexion que la plupart des gens n'arrivent pas à garder.">
             In many villages the cell signal is weak or gone, and where it works, data bundles run
             out in days. School, work, and staying in touch with relatives all depend on a connection
             most people cannot keep.
           </p>
-          <p class="big">
+          <p class="big" data-fr="Notre mission est de rendre une connexion fiable plus accessible et plus abordable, afin que davantage de personnes puissent apprendre, travailler, communiquer, créer des entreprises et rester en contact.">
             Our mission is to make reliable connectivity more accessible and affordable, giving more
             people the opportunity to learn, work, communicate, build businesses, and stay connected.
           </p>
           <p class="focus">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-            <span><strong>Starting where the signal isn't.</strong> Beginning with village centres
+            <span data-fr="<strong>Commencer là où il n'y a pas de réseau.</strong> D'abord les centres de village mal desservis, ou pas desservis du tout, puis les foyers."><strong>Starting where the signal isn't.</strong> Beginning with village centres
             that have little or no dependable service, then growing into homes.</span>
           </p>
-          <p class="tags">In the village <i></i> For learning <i></i> For local work</p>
+          <p class="tags" data-fr="Au village <i></i> Pour apprendre <i></i> Pour le travail local">In the village <i></i> For learning <i></i> For local work</p>
         </div>
 
         <div>
           <img class="art" src="assets/mission-arches.jpg" width="1000" height="1025"
-               alt="Three arches opening onto everyday life: a home desk, a family at a table, and a small shop">
+               alt="Three arches opening onto everyday life: a home desk, a family at a table, and a small shop"
+               data-fr-alt="Trois arches ouvrant sur la vie quotidienne : un bureau à la maison, une famille à table et une petite boutique">
         </div>
       </div>
     </div>
@@ -441,9 +463,9 @@
   <section class="section section-pale" id="offer">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
-        <p class="eyebrow">Where we start</p>
-        <h2>Village hotspots first. Home internet next.</h2>
-        <p class="lead">Zumfi begins where the need is sharpest — village centres where the cell signal
+        <p class="eyebrow" data-fr="Par où nous commençons">Where we start</p>
+        <h2 data-fr="Les points WiFi au village d'abord. L'internet à domicile ensuite.">Village hotspots first. Home internet next.</h2>
+        <p class="lead" data-fr="Zumfi commence là où le besoin est le plus fort — les centres de village où le réseau mobile est faible ou absent — puis s'étend aux foyers une fois ces sites en service.">Zumfi begins where the need is sharpest — village centres where the cell signal
         is weak or missing — and grows into homes once those sites are running.</p>
       </div>
 
@@ -452,14 +474,14 @@
           <span class="ic" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
           </span>
-          <p class="kind">Phase one · starting now</p>
-          <h3>Village Hotspots</h3>
-          <p>A hotspot at the village centre brings WiFi to where people already gather.
+          <p class="kind" data-fr="Phase une · en cours">Phase one · starting now</p>
+          <h3 data-fr="Points WiFi au village">Village Hotspots</h3>
+          <p data-fr="Un point WiFi au centre du village apporte la connexion là où les gens se retrouvent déjà. Un vendeur local vend l'accès, et chacun se connecte avec son téléphone.">A hotspot at the village centre brings WiFi to where people already gather.
           A local vendor sells access, and people nearby connect with their phones.</p>
           <ul>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Works even where the cell signal is weak or missing</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Pay the vendor by the hour, day, week or month</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Find it where people already gather — a market, a shop, the village centre</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span data-fr="Fonctionne même là où le réseau mobile est faible ou absent">Works even where the cell signal is weak or missing</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span data-fr="Payez le vendeur à l'heure, à la journée, à la semaine ou au mois">Pay the vendor by the hour, day, week or month</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span data-fr="Installé là où les gens se retrouvent déjà — un marché, une boutique, le centre du village">Find it where people already gather — a market, a shop, the village centre</span></li>
           </ul>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
@@ -468,14 +490,14 @@
           <span class="ic" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
           </span>
-          <p class="kind">Phase two · once the villages are growing</p>
-          <h3>Home Internet</h3>
-          <p>A tower in Niamey will link homes through rooftop receivers, giving the whole household
+          <p class="kind" data-fr="Phase deux · quand les villages se développent">Phase two · once the villages are growing</p>
+          <h3 data-fr="Internet à domicile">Home Internet</h3>
+          <p data-fr="Une tour à Niamey reliera les foyers par des récepteurs installés sur les toits, pour donner le WiFi à toute la maison avec un forfait mensuel unique.">A tower in Niamey will link homes through rooftop receivers, giving the whole household
           WiFi for one flat monthly fee.</p>
           <ul>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>One connection for the household, on every device</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>A flat monthly fee instead of capped mobile data</span></li>
-            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span>Installed and supported by a local team</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span data-fr="Une seule connexion pour toute la maison, sur chaque appareil">One connection for the household, on every device</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span data-fr="Un forfait mensuel fixe au lieu de données mobiles limitées">A flat monthly fee instead of capped mobile data</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <span data-fr="Installé et suivi par une équipe locale">Installed and supported by a local team</span></li>
           </ul>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
@@ -487,9 +509,9 @@
   <section class="section" id="how">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
-        <p class="eyebrow">How it works</p>
-        <h2>WiFi where you already are.</h2>
-        <p class="lead">A Zumfi hotspot sits at the heart of the village. You buy access from a local
+        <p class="eyebrow" data-fr="Comment ça marche">How it works</p>
+        <h2 data-fr="Le WiFi là où vous êtes déjà.">WiFi where you already are.</h2>
+        <p class="lead" data-fr="Un point WiFi Zumfi est installé au cœur du village. Vous achetez l'accès auprès d'un vendeur local et vous vous connectez avec le téléphone que vous avez déjà.">A Zumfi hotspot sits at the heart of the village. You buy access from a local
         vendor and connect with the phone already in your pocket.</p>
       </div>
 
@@ -499,8 +521,8 @@
           <span class="ic" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
           </span>
-          <h3>A hotspot in the village</h3>
-          <p>WiFi at the market, the shop, the village centre — the places people already gather.</p>
+          <h3 data-fr="Un point WiFi au village">A hotspot in the village</h3>
+          <p data-fr="Le WiFi au marché, à la boutique, au centre du village — là où les gens se retrouvent déjà.">WiFi at the market, the shop, the village centre — the places people already gather.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
@@ -508,8 +530,8 @@
           <span class="ic" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
           </span>
-          <h3>Buy access from a local vendor</h3>
-          <p>Someone from the village sells you access by the hour, the day, the week or the month.</p>
+          <h3 data-fr="Achetez l'accès auprès d'un vendeur local">Buy access from a local vendor</h3>
+          <p data-fr="Quelqu'un du village vous vend l'accès à l'heure, à la journée, à la semaine ou au mois.">Someone from the village sells you access by the hour, the day, the week or the month.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
         <div class="card">
@@ -517,20 +539,20 @@
           <span class="ic" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
           </span>
-          <h3>Connect your phone</h3>
-          <p>Enter your code and you're online. Nothing to install, and nothing to set up at home.</p>
+          <h3 data-fr="Connectez votre téléphone">Connect your phone</h3>
+          <p data-fr="Saisissez votre code et vous êtes en ligne. Rien à installer, rien à configurer à la maison.">Enter your code and you're online. Nothing to install, and nothing to set up at home.</p>
           <svg class="arcs" viewBox="0 0 176 82" aria-hidden="true"><use href="#arcmark"/></svg>
         </div>
       </div>
 
-      <p class="quote" style="margin-top:46px;">
+      <p class="quote" style="margin-top:46px;" data-fr="La connexion arrive par satellite : un point WiFi Zumfi fonctionne donc même là où le réseau mobile est faible, voire totalement absent.">
         The connection comes in by satellite, so a Zumfi hotspot works even where the cell signal
         is weak or missing altogether.
       </p>
 
       <div class="pledge">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <p><strong>Licensed and compliant.</strong> Zumfi will operate only under a full ARCEP
+        <p data-fr="<strong>Licencié et conforme.</strong> Zumfi n'opérera que sous une licence ARCEP complète, avec des équipements homologués et importés légalement. Aucun service payant ne démarrera avant l'obtention de la licence."><strong>Licensed and compliant.</strong> Zumfi will operate only under a full ARCEP
         licence, with all equipment approved and lawfully imported. No paid service begins before
         the licence is granted.</p>
       </div>
@@ -540,9 +562,9 @@
   <!-- ================= why connectivity matters ================= -->
   <section class="section section-pale" id="why">
     <div class="wrap">
-      <p class="eyebrow gold">Why connectivity matters</p>
-      <h2>More than just WiFi.</h2>
-      <p class="quote" style="margin-top:28px;">
+      <p class="eyebrow gold" data-fr="Pourquoi la connexion compte">Why connectivity matters</p>
+      <h2 data-fr="Bien plus que du WiFi.">More than just WiFi.</h2>
+      <p class="quote" style="margin-top:28px;" data-fr="Un élève ne devrait pas avoir à choisir entre ses devoirs et une semaine de données mobiles.">
         A student shouldn't have to choose between homework and a week of mobile data.
       </p>
 
@@ -553,8 +575,8 @@
             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           </span>
           <div>
-            <h3>Education</h3>
-            <p>Helping students access learning resources, research, online courses, and educational opportunities.</p>
+            <h3 data-fr="Éducation">Education</h3>
+            <p data-fr="Permettre aux élèves et aux étudiants d'accéder aux ressources pédagogiques, à la recherche, aux cours en ligne et aux possibilités de formation.">Helping students access learning resources, research, online courses, and educational opportunities.</p>
           </div>
           <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         </div>
@@ -564,8 +586,8 @@
             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </span>
           <div>
-            <h3>Work &amp; Business</h3>
-            <p>Giving entrepreneurs, professionals, and small businesses better access to digital tools and markets.</p>
+            <h3 data-fr="Travail et entreprise">Work &amp; Business</h3>
+            <p data-fr="Donner aux entrepreneurs, aux professionnels et aux petites entreprises un meilleur accès aux outils numériques et aux marchés.">Giving entrepreneurs, professionals, and small businesses better access to digital tools and markets.</p>
           </div>
           <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         </div>
@@ -575,8 +597,8 @@
             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z"/></svg>
           </span>
           <div>
-            <h3>Communication</h3>
-            <p>Helping families and communities stay connected locally and internationally.</p>
+            <h3 data-fr="Communication">Communication</h3>
+            <p data-fr="Aider les familles et les communautés à rester en contact, au pays comme à l'étranger.">Helping families and communities stay connected locally and internationally.</p>
           </div>
           <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         </div>
@@ -586,8 +608,8 @@
             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/><path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg>
           </span>
           <div>
-            <h3>Opportunity</h3>
-            <p>Making it easier for people to participate in an increasingly digital economy.</p>
+            <h3 data-fr="Opportunités">Opportunity</h3>
+            <p data-fr="Permettre à chacun de participer plus facilement à une économie de plus en plus numérique.">Making it easier for people to participate in an increasingly digital economy.</p>
           </div>
           <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         </div>
@@ -601,23 +623,24 @@
       <div class="panel">
         <div class="panel-media">
           <img src="assets/niamey-aerial.jpg" width="1400" height="1160"
-               alt="Niamey at dusk along the river, with ribbons of connection flowing over the rooftops and people in the street below">
+               alt="Niamey at dusk along the river, with ribbons of connection flowing over the rooftops and people in the street below"
+               data-fr-alt="Niamey au crépuscule le long du fleuve, avec des rubans de connexion qui glissent au-dessus des toits et des passants dans la rue">
           <div class="chip2">
             <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span><strong>Niamey, Niger</strong><span>Beginning close to home</span></span>
+            <span><strong>Niamey, Niger</strong><span data-fr="Commencer près de chez nous">Beginning close to home</span></span>
           </div>
         </div>
         <div class="panel-dark">
           <svg class="deco" viewBox="0 0 176 82" aria-hidden="true"><use href="#arctri"/></svg>
-          <p class="eyebrow mint">Launching in Niamey</p>
-          <h2>Starting in Niamey.</h2>
-          <p>
+          <p class="eyebrow mint" data-fr="Lancement à Niamey">Launching in Niamey</p>
+          <h2 data-fr="Nous commençons à Niamey.">Starting in Niamey.</h2>
+          <p data-fr="Zumfi prépare le lancement de ses premiers services à Niamey, au Niger. Notre objectif est de commencer localement, d'apprendre des communautés que nous servons et de bâtir une base solide pour la suite.">
             Zumfi is preparing to launch its first services in Niamey, Niger. Our goal is to begin
             locally, learn from the communities we serve, and build a strong foundation for future growth.
           </p>
-          <p class="tags-dot"><span><i></i> Preparing to launch</span><span><i></i> Starting locally</span></p>
+          <p class="tags-dot" data-fr="<span><i></i> Lancement en préparation</span><span><i></i> Démarrage local</span>"><span><i></i> Preparing to launch</span><span><i></i> Starting locally</span></p>
           <a class="btn btn-white" href="#contact">
-            Stay in touch
+            <span data-fr="Restons en contact">Stay in touch</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 8 17 17 8 17"/></svg>
           </a>
         </div>
@@ -629,9 +652,9 @@
   <section class="section section-pale" id="contact">
     <div class="wrap">
       <div class="section-head narrow center" style="margin-left:auto;margin-right:auto;">
-        <p class="eyebrow">Contact</p>
-        <h2>Let's connect.</h2>
-        <p class="lead">Interested in Zumfi, potential collaboration, or learning more about what we're
+        <p class="eyebrow" data-fr="Contact">Contact</p>
+        <h2 data-fr="Connectons-nous.">Let's connect.</h2>
+        <p class="lead" data-fr="Zumfi vous intéresse, vous pensez à une collaboration ou vous souhaitez en savoir plus sur ce que nous construisons&nbsp;? Nous serions ravis d'échanger avec vous.">Interested in Zumfi, potential collaboration, or learning more about what we're
         building? We'd be glad to hear from you.</p>
       </div>
 
@@ -640,7 +663,7 @@
           <span class="ic" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.38 8.38 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z"/></svg>
           </span>
-          <span><strong>Contact Zumfi</strong><span style="font-size:16.5px;color:var(--blue);text-decoration:underline;text-underline-offset:3px;">sey182833@oru.edu</span></span>
+          <span><strong data-fr="Contacter Zumfi">Contact Zumfi</strong><span style="font-size:16.5px;color:var(--blue);text-decoration:underline;text-underline-offset:3px;">sey182833@oru.edu</span></span>
           <span class="go" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         </a>
 
@@ -650,42 +673,42 @@
             <input type="hidden" name="form-name" value="contact">
             <p class="hp" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
             <div class="row-2">
-              <div class="field"><label for="name">Name</label>
-                <input id="name" name="name" type="text" required autocomplete="name" placeholder="Aïcha Moussa"></div>
-              <div class="field"><label for="email">Email</label>
-                <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+              <div class="field"><label for="name" data-fr="Nom">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" placeholder="Aïcha Moussa" data-fr-ph="Aïcha Moussa"></div>
+              <div class="field"><label for="email" data-fr="E-mail">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" data-fr-ph="vous@exemple.com"></div>
             </div>
             <div class="row-2">
-              <div class="field"><label for="phone">Phone <span class="opt">(optional)</span></label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+227 …"></div>
-              <div class="field"><label for="area">Quartier <span class="opt">(optional)</span></label>
-                <input id="area" name="area" type="text" placeholder="e.g. Yantala"></div>
+              <div class="field"><label for="phone" data-fr="Téléphone <span class=&quot;opt&quot;>(facultatif)</span>">Phone <span class="opt">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+227 …" data-fr-ph="+227 …"></div>
+              <div class="field"><label for="area" data-fr="Quartier <span class=&quot;opt&quot;>(facultatif)</span>">Quartier <span class="opt">(optional)</span></label>
+                <input id="area" name="area" type="text" placeholder="e.g. Yantala" data-fr-ph="ex. Yantala"></div>
             </div>
-            <div class="field"><label for="message">Message</label>
-              <textarea id="message" name="message" required placeholder="What would you like to know?"></textarea></div>
+            <div class="field"><label for="message" data-fr="Message">Message</label>
+              <textarea id="message" name="message" required placeholder="What would you like to know?" data-fr-ph="Que souhaitez-vous savoir&nbsp;?"></textarea></div>
             <div class="form-foot">
-              <button class="btn btn-primary" type="submit" id="submit-btn">Send message</button>
+              <button class="btn btn-primary" type="submit" id="submit-btn" data-fr="Envoyer le message">Send message</button>
             </div>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
           <div class="sent" id="sent-panel">
-            <h3>Message sent — thank you.</h3>
-            <p>We'll reply within two business days. If it's urgent, call <a href="tel:+18162169235" target="_blank" rel="noopener">+1 816 216 9235</a>.</p>
+            <h3 data-fr="Message envoyé — merci.">Message sent — thank you.</h3>
+            <p data-fr="Nous répondons sous deux jours ouvrés. En cas d'urgence, appelez <a href=&quot;tel:+18162169235&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>+1 816 216 9235</a>.">We'll reply within two business days. If it's urgent, call <a href="tel:+18162169235" target="_blank" rel="noopener">+1 816 216 9235</a>.</p>
           </div>
         </div>
 
         <div>
           <div class="detail">
             <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <div><p class="k">Phone</p><a class="v" href="tel:+18162169235" target="_blank" rel="noopener">+1 816 216 9235</a></div>
+            <div><p class="k" data-fr="Téléphone">Phone</p><a class="v" href="tel:+18162169235" target="_blank" rel="noopener">+1 816 216 9235</a></div>
           </div>
           <div class="detail">
             <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <div><p class="k">Where we are</p><span class="v">Niamey, Niger</span></div>
+            <div><p class="k" data-fr="Où nous sommes">Where we are</p><span class="v">Niamey, Niger</span></div>
           </div>
           <div class="detail">
             <span class="ic" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-            <div><p class="k">Who you'll reach</p><span class="v">Levi Seydou<small>Founder, Zumfi</small></span></div>
+            <div><p class="k" data-fr="Votre interlocuteur">Who you'll reach</p><span class="v">Levi Seydou<small data-fr="Fondateur, Zumfi">Founder, Zumfi</small></span></div>
           </div>
         </div>
       </div>
@@ -699,16 +722,16 @@
 <footer class="site-footer">
   <div class="wrap">
     <span class="foot-logo"><img src="assets/zumfi-logo.png" alt="Zumfi"></span>
-    <p class="foot-tag">Reliable Internet. Within Reach.</p>
-    <nav class="foot-nav" aria-label="Footer">
-      <a href="#offer">What We Offer</a>
-      <a href="#mission">Mission</a>
-      <a href="#how">How It Works</a>
-      <a href="#why">Why Connectivity Matters</a>
-      <a href="#contact">Contact</a>
+    <p class="foot-tag" data-fr="Un internet fiable. À votre portée.">Reliable Internet. Within Reach.</p>
+    <nav class="foot-nav" aria-label="Footer" data-fr-aria="Pied de page">
+      <a href="#offer" data-fr="Nos offres">What We Offer</a>
+      <a href="#mission" data-fr="Mission">Mission</a>
+      <a href="#how" data-fr="Comment ça marche">How It Works</a>
+      <a href="#why" data-fr="Pourquoi la connexion compte">Why Connectivity Matters</a>
+      <a href="#contact" data-fr="Contact">Contact</a>
     </nav>
     <div class="foot-base">
-      <p>© 2026 Zumfi. All rights reserved.</p>
+      <p data-fr="© 2026 Zumfi. Tous droits réservés.">© 2026 Zumfi. All rights reserved.</p>
       <p class="where">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Niamey, Niger · <a href="mailto:sey182833@oru.edu" target="_blank" rel="noopener">sey182833@oru.edu</a>
@@ -718,6 +741,71 @@
 </footer>
 
 <script>
+  // EN / FR switch. Translatable nodes carry data-fr (inner markup), data-fr-ph
+  // (placeholder), data-fr-alt (alt) or data-fr-aria (aria-label). English is read
+  // from the document itself on load, so the page still reads correctly without JS.
+  (function () {
+    var root = document.documentElement;
+    var KEY = 'zumfi-lang';
+    var META = {
+      en: {
+        title: 'Zumfi \u2014 Reliable Internet. Within Reach.',
+        desc: 'Zumfi is a new internet service in Niger. We start with village hotspots that bring ' +
+              'WiFi where the cell signal is weak or missing, and grow into home internet next. ' +
+              'Preparing to launch in Niamey.'
+      },
+      fr: {
+        title: 'Zumfi \u2014 Un internet fiable. \u00c0 votre port\u00e9e.',
+        desc: 'Zumfi est un nouveau service internet au Niger. Nous commen\u00e7ons par des points ' +
+              'WiFi au village, l\u00e0 o\u00f9 le r\u00e9seau mobile est faible ou absent, puis l\'internet ' +
+              '\u00e0 domicile. Lancement en pr\u00e9paration \u00e0 Niamey.'
+      }
+    };
+    var nodes = [].slice.call(
+      document.querySelectorAll('[data-fr],[data-fr-ph],[data-fr-alt],[data-fr-aria]'));
+    var english = nodes.map(function (el) {
+      return {
+        html: el.innerHTML,
+        ph: el.getAttribute('placeholder'),
+        alt: el.getAttribute('alt'),
+        aria: el.getAttribute('aria-label')
+      };
+    });
+    var desc = document.querySelector('meta[name="description"]');
+    var buttons = [].slice.call(document.querySelectorAll('[data-set-lang]'));
+
+    function set(lang, remember) {
+      if (lang !== 'fr') lang = 'en';
+      var fr = lang === 'fr';
+      nodes.forEach(function (el, i) {
+        if (el.hasAttribute('data-fr')) el.innerHTML = fr ? el.getAttribute('data-fr') : english[i].html;
+        if (el.hasAttribute('data-fr-ph')) el.setAttribute('placeholder', fr ? el.getAttribute('data-fr-ph') : english[i].ph);
+        if (el.hasAttribute('data-fr-alt')) el.setAttribute('alt', fr ? el.getAttribute('data-fr-alt') : english[i].alt);
+        if (el.hasAttribute('data-fr-aria')) el.setAttribute('aria-label', fr ? el.getAttribute('data-fr-aria') : english[i].aria);
+      });
+      root.setAttribute('lang', lang);
+      document.title = META[lang].title;
+      if (desc) desc.setAttribute('content', META[lang].desc);
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
+      });
+      if (remember) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { set(b.getAttribute('data-set-lang'), true); });
+    });
+
+    // Remember the visitor's choice; otherwise open in French for a French browser.
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved === 'fr' || saved === 'en') {
+      if (saved === 'fr') set('fr', false);
+    } else if ((navigator.language || '').toLowerCase().indexOf('fr') === 0) {
+      set('fr', false);
+    }
+  })();
+
   // Post the form in place so the visitor keeps their place on the page.
   // Without JS it submits normally and Netlify shows its own success page.
   (function () {
@@ -732,19 +820,24 @@
       // In an embedded preview there is no Netlify endpoint to post to; show the
       // fallback rather than navigating the frame to a POST it cannot answer.
       var framed = window.self !== window.top;
+      var fr = document.documentElement.lang === 'fr';
+      var mail = '<a href="mailto:sey182833@oru.edu" target="_blank" rel="noopener">sey182833@oru.edu</a>';
+      var tel = '<a href="tel:+18162169235" target="_blank" rel="noopener">+1 816 216 9235</a>';
       status.textContent = '';
       status.classList.remove('error');
       var label = btn.textContent;
       btn.disabled = true;
       btn.style.opacity = '.65';
-      btn.textContent = 'Sending…';
+      btn.textContent = fr ? 'Envoi…' : 'Sending…';
 
       if (framed) {
         btn.disabled = false; btn.style.opacity = '1'; btn.innerHTML = label;
         status.classList.add('error');
-        status.innerHTML = 'This is a preview — the form sends for real once the site is ' +
-          'deployed. Until then, email <a href="mailto:sey182833@oru.edu" target="_blank" ' +
-          'rel="noopener">sey182833@oru.edu</a>.';
+        status.innerHTML = fr
+          ? 'Ceci est un aper\u00e7u \u2014 le formulaire enverra vraiment une fois le site en ligne. ' +
+            'En attendant, \u00e9crivez \u00e0 ' + mail + '.'
+          : 'This is a preview \u2014 the form sends for real once the site is deployed. ' +
+            'Until then, email ' + mail + '.';
         return;
       }
       fetch(form.getAttribute('action') || window.location.pathname, {
@@ -760,9 +853,10 @@
         btn.style.opacity = '1';
         btn.textContent = label;
         status.classList.add('error');
-        status.innerHTML = 'Sorry — that didn\'t send. Please email ' +
-          '<a href="mailto:sey182833@oru.edu" target="_blank" rel="noopener">sey182833@oru.edu</a> or call ' +
-          '<a href="tel:+18162169235" target="_blank" rel="noopener">+1 816 216 9235</a>.';
+        status.innerHTML = fr
+          ? 'D\u00e9sol\u00e9 \u2014 l\'envoi a \u00e9chou\u00e9. \u00c9crivez \u00e0 ' + mail +
+            ' ou appelez ' + tel + '.'
+          : 'Sorry \u2014 that didn\'t send. Please email ' + mail + ' or call ' + tel + '.';
       });
     });
   })();
