@@ -1,0 +1,10 @@
+# Netlify config for the Zumfi site.
+#
+# index.html is self-contained — inline CSS, inline SVG, no framework — so there
+# is nothing to build. Netlify just serves export/zumfi-site as the site root.
+#
+# This file lives on the Zumfi branch only. The photography site on main deploys
+# elsewhere (see export/levi-seydou-site/vercel.json) and is unaffected.
+
+[build]
+  publish = "export/zumfi-site"
