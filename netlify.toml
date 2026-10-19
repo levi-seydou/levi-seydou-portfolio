@@ -8,3 +8,12 @@
 
 [build]
   publish = "export/zumfi-site"
+
+# README.md sits next to index.html so it travels with the code, but it is
+# internal: design notes, open issues, and a list of the partner-only material
+# deliberately kept off the public page. Don't serve it.
+[[redirects]]
+  from = "/README.md"
+  to = "/"
+  status = 301
+  force = true
