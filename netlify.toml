@@ -1,19 +1,11 @@
-# Netlify config for the Zumfi site.
+# Netlify config for zumfiwifi.com.
 #
-# index.html is self-contained — inline CSS, inline SVG, no framework — so there
-# is nothing to build. Netlify just serves export/zumfi-site as the site root.
+# export/zumfiwifi-site is a finished, static site (Astro build output), so there
+# is nothing to build: Netlify serves that folder as the site root. Every push to
+# the branch Netlify watches goes live on its own.
 #
-# This file lives on the Zumfi branch only. The photography site on main deploys
-# elsewhere (see export/levi-seydou-site/vercel.json) and is unaffected.
+# Notes on how the site is put together: export/ZUMFIWIFI.md (kept outside the
+# published folder on purpose, so it is never served).
 
 [build]
-  publish = "export/zumfi-site"
-
-# README.md sits next to index.html so it travels with the code, but it is
-# internal: design notes, open issues, and a list of the partner-only material
-# deliberately kept off the public page. Don't serve it.
-[[redirects]]
-  from = "/README.md"
-  to = "/"
-  status = 301
-  force = true
+  publish = "export/zumfiwifi-site"
