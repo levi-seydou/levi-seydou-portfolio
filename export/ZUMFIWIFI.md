@@ -81,6 +81,20 @@ not from a fresh download.
    starts at scroll 0 with `.to()` from the element's resting state. (c)
    `html,body{overscroll-behavior-y:none}` turns off the rubber-band bounce at the
    very top and bottom, where the sticky header and scrubbed animations jittered.
+9. **Hiccups on phones while scrolling.** A paint-invalidation trace showed the scene's
+   "camera" (scale/translate on `<g class="scene-camera">`, which wraps the whole
+   drawing) forced every shape in the SVG to re-lay-out on every scrubbed frame: ~68,000
+   SVG layout invalidations in one slow scroll-through. The camera now transforms the
+   `<svg id="network-scene">` element itself (CSS transform, its own GPU layer), with the
+   SVG units converted to pixels via the viewBox scale, so the result is pixel-identical
+   (<0.25% of pixels differ, anti-aliasing) and invalidations drop to ~2,800. Also:
+   `will-change` on every continuously scroll-animated element and on the animated SVGs,
+   so they keep stable layers; `html.is-scrolling` (set by the start-up script, cleared
+   220ms after the last scroll, announced with a `zumfi:scrollstate` event) pauses the
+   hero's looping CSS animations and the GSAP ambient loops while a finger is scrolling;
+   `decoding="async"` on every image. Raster time over a slow scroll: 1808ms -> 690ms.
+   Not given permanent layers on purpose: the 11 `.reveal` sections (about 100MB of
+   GPU memory on a phone).
 
 ## Known, left as built
 
