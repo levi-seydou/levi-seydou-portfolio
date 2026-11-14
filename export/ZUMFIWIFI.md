@@ -38,9 +38,9 @@ not from a fresh download.
    froze the section's height and Codex's resize handler ignored height changes under
    120px on touch devices, i.e. the browser toolbar showing/hiding. Content then re-laid
    out taller than the frozen box: heading sliced, blank cream band below.
-   Fix: debounced `ScrollTrigger.refresh()` when `innerHeight` settles on a new value
-   (`motion.*.js`, right after `$.config({ignoreMobileResize:!0})`), and
-   `.pin-spacer{background:var(--ink)}` so space under the pinned scene is navy.
+   First fixed with a debounced `ScrollTrigger.refresh()` on height changes; that was
+   later removed (see 8) once the scene moved to native sticky (see 7), which cannot
+   clip because the section keeps its natural height.
 2. **Animation always on.** Removed the Pause / "Animer la page" button and the
    heuristics that switched animation off for ≤4 CPU cores, Save-Data or slow
    connections (`v` is now fixed to `full`). OS "Reduce Motion" is still honoured.
@@ -72,6 +72,15 @@ not from a fresh download.
    context's returned function) removes the sticky state. Layout shift went 1.5 -> 0.
    Known, unchanged from Codex: shrink a desktop window until the scene no longer fits
    and it falls back to the static layout; enlarging again needs a reload to re-animate.
+8. **Glitches at the start and end on phones.** (a) The height-change refresh fired as
+   iOS's browser bar hid and came back; with the scroll distance tied to `innerHeight`,
+   the wrapper shrank when the bar returned at the bottom and the page lurched 385px.
+   The refresh is gone and the distance `D()` is measured once, updated only when the
+   width changes (rotation). (b) The hero's scrub timeline rendered its mid-progress
+   state when motion started up, jolting the illustration 10px right after load; it now
+   starts at scroll 0 with `.to()` from the element's resting state. (c)
+   `html,body{overscroll-behavior-y:none}` turns off the rubber-band bounce at the
+   very top and bottom, where the sticky header and scrubbed animations jittered.
 
 ## Known, left as built
 
