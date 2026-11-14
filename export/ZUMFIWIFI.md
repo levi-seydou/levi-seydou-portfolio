@@ -53,6 +53,16 @@ not from a fresh download.
    from 0.35–0.65 (one was `true`) to 0.8–1; reveal fade-ins are .95s `power3.out`
    starting at `top 96%`; pinned-scene step text fades in over .45s and the outgoing
    step reverses at 2.4x. Measured on a 4x-throttled phone: worst frame 533ms -> 33ms.
+5. **Snaps while scrolling slowly.** `ScrollTrigger.refresh()` reverts scroll-linked
+   animations to measure, and timelines that had not started yet came back in their
+   final state. In "What moves us" each number sat at full brightness until its row hit
+   the trigger, then snapped 12px down and dim before easing back. A `refresh` listener
+   (next to the resize code in `motion.*.js`) re-draws every not-yet-started (or
+   finished) animation in its start (or end) state, with events suppressed.
+   The early lock of the pinned section is `anticipatePin:1`, kept on purpose: it
+   offsets iOS's threaded scrolling, even though a desktop test reads it as a small jump.
+6. **Header blur removed.** `.site-header` had `backdrop-filter:blur(16px)` over a 93%
+   opaque background; iOS re-blurs it every frame while scrolling. Now solid `#fafaf6`.
 
 ## Known, left as built
 
