@@ -46,6 +46,13 @@ not from a fresh download.
    connections (`v` is now fixed to `full`). OS "Reduce Motion" is still honoured.
 3. **Asset names.** Every file in `_astro/` was renamed to a content hash
    (`zumfiwifi-rehash.py`), so visitors who cached Codex's files get the fixed ones.
+4. **Smoother scrolling.** The motion set-up (`initMotion`, ~400ms on a 4x-throttled
+   phone) used to run on the first scroll, freezing the page as the visitor started
+   moving. It now runs at idle time after load (`requestIdleCallback`, 2.5s timeout;
+   the scroll trigger stays as a fallback). All 10 ScrollTrigger `scrub` values went
+   from 0.35–0.65 (one was `true`) to 0.8–1; reveal fade-ins are .95s `power3.out`
+   starting at `top 96%`; pinned-scene step text fades in over .45s and the outgoing
+   step reverses at 2.4x. Measured on a 4x-throttled phone: worst frame 533ms -> 33ms.
 
 ## Known, left as built
 
