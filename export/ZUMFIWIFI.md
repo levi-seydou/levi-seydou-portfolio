@@ -59,10 +59,19 @@ not from a fresh download.
    the trigger, then snapped 12px down and dim before easing back. A `refresh` listener
    (next to the resize code in `motion.*.js`) re-draws every not-yet-started (or
    finished) animation in its start (or end) state, with events suppressed.
-   The early lock of the pinned section is `anticipatePin:1`, kept on purpose: it
-   offsets iOS's threaded scrolling, even though a desktop test reads it as a small jump.
 6. **Header blur removed.** `.site-header` had `backdrop-filter:blur(16px)` over a 93%
    opaque background; iOS re-blurs it every frame while scrolling. Now solid `#fafaf6`.
+7. **Native locking for the "From the sky" scene.** It used ScrollTrigger `pin`, which
+   switches the section to `position:fixed` from JavaScript; with threaded scrolling
+   (iOS especially) that lands a frame late, and `anticipatePin` traded it for an early
+   jump (11px phone / 19px laptop in a slow-scroll trace). The section now sits in
+   `<div class="story-pin">` and is `position:sticky` (class `is-sticky`, `top` = header
+   height). A `refreshInit` listener sizes the wrapper to section height + scroll
+   distance before every measure, and the timeline's trigger is the wrapper. If the
+   wrapper is missing the code falls back to the old JS pin. Clean-up (`n()` and the
+   context's returned function) removes the sticky state. Layout shift went 1.5 -> 0.
+   Known, unchanged from Codex: shrink a desktop window until the scene no longer fits
+   and it falls back to the static layout; enlarging again needs a reload to re-animate.
 
 ## Known, left as built
 
