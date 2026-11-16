@@ -95,6 +95,29 @@ not from a fresh download.
    `decoding="async"` on every image. Raster time over a slow scroll: 1808ms -> 690ms.
    Not given permanent layers on purpose: the 11 `.reveal` sections (about 100MB of
    GPU memory on a phone).
+10. **Readability and the screen-filling scene (visual pass).**
+   - Text sizes: every declared size under 11px is now 11px (7-10 -> 11, 11 -> 12,
+     12 -> 13, 13 -> 14) and odd sizes of 19px and up were rounded down to even, taking
+     the declared scale from 54 sizes to 34. No text lives inside the SVG drawings, so
+     the artwork is unaffected.
+   - The pinned scene is now exactly one screen tall: `.story-section.story-enhanced` is
+     a flex column of height `100lvh - var(--zh)` (`--zh` = header height, 94/79px), the
+     drawing is absolutely positioned inside a flexible `.story-visual` and scales to
+     whatever height is left, and the cue row sits at the bottom. Its top margin is
+     `max(10px, 100lvh - 100svh - 40px)`, which puts the cue in the strip an iOS/Android
+     browser bar covers, so everything above it is visible in both bar states and
+     nothing re-lays-out when the bar toggles (no `dvh`, no height media queries: the
+     old `(height<=700px)` rules are all overridden).
+   - Fit check `s()` is now "content does not overflow the section box"
+     (`scrollHeight <= clientHeight`), and the `tall` matchMedia condition is
+     `(min-device-height: 600px)` so it cannot flip as a phone's bar shows/hides. The
+     scene therefore also animates on short laptop windows and small phones; it only
+     falls back to the static list when the drawing would drop under its minimum
+     (150px phone / 220px laptop).
+   - The first offer card repeated the hero picture. It now shows a 1.38x close-up
+     (`transform` on `picture` and on the `.offer-village-signals` overlay, same origin,
+     so the signal pulses stay registered) and uses the 1040px file the hero already
+     loads.
 
 ## Known, left as built
 
