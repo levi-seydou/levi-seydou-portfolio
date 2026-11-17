@@ -1,0 +1,11 @@
+# Netlify config for zumfiwifi.com.
+#
+# export/zumfiwifi-site is a finished, static site (Astro build output), so there
+# is nothing to build: Netlify serves that folder as the site root. Every push to
+# the branch Netlify watches goes live on its own.
+#
+# Notes on how the site is put together: export/ZUMFIWIFI.md (kept outside the
+# published folder on purpose, so it is never served).
+
+[build]
+  publish = "export/zumfiwifi-site"
