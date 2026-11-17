@@ -14,3 +14,27 @@
 @media (width<=800px){.story-section.story-enhanced{padding-block:clamp(12px,2.4vh,25px) 0}.story-section.story-enhanced .story-intro .eyebrow{margin-bottom:clamp(6px,1.2vh,11px);font-size:11px}.story-section.story-enhanced .story-intro h2{max-width:480px;font-size:clamp(26px,4.3vh,34px);line-height:1.08}.story-section .story-journey{margin-top:clamp(12px,2.2vh,20px)}.story-section .story-journey-stop{gap:6px;font-size:11px}.story-section.story-enhanced .story-stage{flex-direction:column;gap:clamp(8px,1.5vh,14px);margin-top:clamp(8px,1.5vh,12px);display:flex;align-items:stretch}.story-section.story-enhanced .story-visual{flex:auto;width:100%;max-width:none;min-height:150px;margin:0}.story-section.story-enhanced .story-copy{flex:none;min-height:0;padding:0}.story-section.story-enhanced .story-step{padding-block:0}.story-section.story-enhanced .step-index{margin-bottom:clamp(5px,1vh,8px);font-size:12px}.story-section.story-enhanced .step-index span:first-child{font-size:16px}.story-section.story-enhanced .story-step h3{font-size:clamp(23px,3.7vh,29px);line-height:1.1}.story-section.story-enhanced .story-step p{max-width:560px;margin-top:clamp(7px,1.2vh,10px);font-size:clamp(14px,2vh,16px);line-height:1.5}.story-section.story-enhanced .story-scroll-cue{gap:12px;padding-top:11px;padding-right:0}.story-section.story-enhanced .story-scroll-instruction{font-size:11px}.story-section.story-enhanced .story-scroll-instruction svg{width:14px;height:21px}.story-section .story-scroll-count{font-size:11px}}
 .offer-showcase-photo picture,.offer-showcase-photo .offer-village-signals{transform-origin:69% 87%;transform:scale(1.38)}
 
+
+/* Zumfi Learn section on the home page, same skin as the Learn page */
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser{background:#0a2147;color:#eef4ff}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser>.wrap{background:linear-gradient(#10306a,#0c2452);border:2px solid #2f63b8;border-radius:40px;padding:34px 40px 42px;box-shadow:0 0 0 7px #2f63b81f,0 30px 70px #00000073,inset 0 1px #ffffff1f}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-number{color:#b9cbe8;border-right-color:#ffffff26}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .learn-brand-word{color:#fff}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .learn-brand-word b{color:var(--green)}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-status{background:var(--gold);color:#0b2247;border:0;border-radius:99px;padding:9px 16px;font-weight:800;box-shadow:inset 0 -3px #0b224724}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser h2{color:#fff;letter-spacing:-.045em;font-weight:800}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser h2>span:last-child{color:var(--green)}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-lead{color:#eef4ff}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-detail{color:#b9cbe8}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .button{background:var(--green);border-color:var(--green);color:#0b2247;font-weight:800;box-shadow:0 5px #06173680,inset 0 2px #ffffff59}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .button>span:last-child{color:#fff;background:#0b2247;border-radius:50%;flex:none;place-items:center;width:34px;height:34px;margin-block:-7px;margin-right:-9px;font-size:17px;line-height:1;display:grid}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-visual picture{border:3px solid #ffffff26;border-radius:26px}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-visual figcaption{color:#b9cbe8}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-note{background:var(--gold);border:0;border-radius:24px;box-shadow:inset 0 -6px #0b22471f,inset 0 2px #ffffff73,0 14px 30px #00000059}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-note-icon{color:#fff;background:#0b2247;border-radius:50%}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-note strong{color:#0b2247;font-weight:800}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-note p{color:#0b2247d9}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser :focus-visible{outline-color:var(--gold)}
+@media (width<=800px){body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser>.wrap{padding:28px 28px 34px}}
+@media (width<=520px){body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser>.wrap{border-radius:32px;width:calc(100% - 24px);padding:22px 18px 28px}body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser h2{font-size:38px}body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-note{border-radius:20px}body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser .public-learn-teaser-note-icon{width:38px;height:38px}}
+body[data-page] .public-learn-teaser.public-learn-teaser.public-learn-teaser h2 .scroll-title-text{text-wrap:balance}
